@@ -89,6 +89,7 @@ plot(PREDICTS_pca,
      coloring.var=T, leg=TRUE,
      posleg="topright", main="All variables")
 
+PREDICTS_pca$sqload
 source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_fragSAD_multi4_posterior_wrangle.R')
 
 fragSAD_meta <- read_delim('~/Dropbox/1current/fragmentation_synthesis/FragFrame_1/data/new_meta_2_merge.csv',  delim =';') %>% 
@@ -118,9 +119,14 @@ fSAD_pca <- PCAmix(X.quanti = fSAD_x1,
 
 plot(fSAD_pca,
      choice="ind",
-     coloring.ind=fSAD_x2$Matrix.category,
+     # coloring.ind=fSAD_x2$Matrix.category,
      label=FALSE,
      posleg="bottomright", main="Observations")
+
+plot(fSAD_pca,
+     choice="sqload",
+     coloring.var=T, leg=TRUE,
+     posleg="topright", main="All variables")
 
 plot(fSAD_pca,
      choice="levels",
@@ -132,10 +138,6 @@ plot(fSAD_pca,
      label=TRUE,
      main="Levels")
 
-plot(fSAD_pca,
-     choice="sqload",
-     coloring.var=T, leg=TRUE,
-     posleg="topright", main="All variables")
 
 source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_fwater_multi4_wrangle.R')
 fwater_pca_dat2 <- fwater_study_LU_multi %>% 
@@ -174,7 +176,7 @@ plot(fwater_pca,
      posleg="topright", main="All variables")
 
 source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_supp_multi4_posterior_wrangle.R')
-exp <- read_csv(paste0(path2wd, 'data/experiments_analysis_data.csv'))
+exp_dat <- read_csv(paste0(path2wd, 'multiComponentChange/data/experiments_analysis_data.csv'))
 supp_pca_dat2 <- supp_trt_summary %>% 
   mutate(N = N_slope,
          S = S_slope,
@@ -182,7 +184,7 @@ supp_pca_dat2 <- supp_trt_summary %>%
          Sn = Sn_slope) %>% 
   select(group, N, S, Sn, ENSPIE) %>% 
   separate(group, into = c('referenceID', 'siteID', 'site2'), remove = FALSE) %>% 
-  left_join(exp %>% 
+  left_join(exp_dat %>% 
               mutate(siteID = as.character(siteID)) %>% 
               select(referenceID, siteID, taxa, habitat),
             by = c('referenceID', 'siteID')) %>% 
@@ -222,10 +224,40 @@ plot(supp_pca,
      posleg="topright", main="All variables")
 
 source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_btx_multi4_posterior_wrangle.R')
-btx_pca_dat <- btx_study_summary %>% 
+btx_pca_dat2 <- btx_study_summary %>% 
   mutate(N = N_slope,
          S = S_slope,
          ENSPIE = ENSPIE_slope,
          Sn = Sn_slope) %>% 
-  select(study_trt, N, S, Sn, ENSPIE) %>% 
+  select(study_trt, N, S, Sn, ENSPIE) 
   
+btx_split <- splitmix(btx_pca_dat2)
+btx_x1 <- btx_split$X.quanti
+btx_x2 <- btx_split$X.quali
+btx_pca <- PCAmix(X.quanti = btx_x1,
+                   X.quali = btx_x2,
+                   rename.level = TRUE,
+                   graph = FALSE)
+
+
+plot(btx_pca,
+     choice="ind",
+     coloring.ind=btx_x2$taxa,
+     label=FALSE,
+     posleg="bottomright", main="Observations")
+
+plot(btx_pca,
+     choice="levels",
+     label=TRUE,
+     main="Levels")
+
+plot(btx_pca,
+     choice="cor",
+     label=TRUE,
+     main="Levels")
+
+plot(btx_pca,
+     choice="sqload",
+     coloring.var=T, leg=TRUE,
+     posleg="topright", main="All variables")
+

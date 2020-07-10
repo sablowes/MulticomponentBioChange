@@ -1,13 +1,14 @@
 source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/0_init_dirs_load_packages.R')
 
 load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/bt_multi4_pois3_lnorm_results.Rdata')
-source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_PREDICTS_multi_coef_wrangle.R')
-source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_fragSAD_multi4_posterior_wrangle.R')
-source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_fwater_multi4_wrangle.R')
-source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_supp_multi4_posterior_wrangle.R')
-source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_btx_multi4_posterior_wrangle.R')
-source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_cestes_multi4_posterior_wrangle.R')
-source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/5_mcgill_multi4_posterior_wrangle.R')
+load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/predicts_multi4_results.Rdata')
+load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/fragSAD_multi4_results.Rdata')
+load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/fwater_multi4_results.Rdata')
+load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/supp_mult4_results.Rdata')
+load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/btx_multi4_results.Rdata')
+load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/cestes_multi4_results.Rdata')
+load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/mcgill_multi4_results.Rdata')
+
 
 #---combine predicts and freshwater db, and CESTES and McGill
 PREDICTS_SS_posterior <- PREDICTS_SS_posterior %>% 
@@ -530,8 +531,8 @@ plot_grid(natural_cols, impact_cols,
           # rel_heights = c(6.2/9,1)
 )
 
-ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/combined_density_multi4_condensed.png',
-       height = 290, width = 220, units = 'mm')
+# ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/combined_density_multi4_condensed.png',
+#        height = 290, width = 220, units = 'mm')
 
 # plot(ellipse::ellipse(bt_vcov, centre = bt_mu, 
 #                       which = c(3,4), level = 0.1), type = 'l')
@@ -1027,5 +1028,5 @@ plot_grid(N_corrs_natural,
           # rel_heights = c(2.2/3,1)
 )
 
-ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/condensed_density_multi4_supp.png',
-       height = 290, width = 240, units = 'mm')
+# ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/condensed_density_multi4_supp.png',
+#        height = 290, width = 240, units = 'mm')
