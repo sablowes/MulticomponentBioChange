@@ -1,8 +1,5 @@
-# plot results from cestes db
-
-source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/0_init_dirs_load_packages.R')
-
-load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/cestes6_multi4_fit.Rdata')
+# prepare results from cestes db
+load('~/Dropbox/1current/multidimensionalChangeMS/results/cestes6_multi4_fit.Rdata')
 meta <- read_csv('~/Dropbox/1current/data/rCESTES/Metadat.csv')
 
 cestes_coefs <- coef(m1_6sites, robust = TRUE, probs = c(0.05, 0.95))
@@ -115,7 +112,8 @@ cestes_coefs_multi4 <- left_join(cestes_coefs_multi4,
                                  meta %>% 
                                    mutate(study = dat) %>% 
                                    select(-dat, -X1)) %>% 
-  mutate(db = 'CESTES')
+  mutate(db = 'CESTES') %>% 
+  ungroup()
 
 
 levels <- m1_6sites$data %>% 
@@ -124,7 +122,8 @@ levels <- m1_6sites$data %>%
   mutate(level = dataset_id,
          site = ifelse(newID==1, 'Intercept', paste0('newID', newID))) %>% 
   group_by(dataset_id) %>% 
-  nest(data = c(level, site)) 
+  nest(data = c(level, site)) %>% 
+  ungroup() 
 
 cestes_multi4_posterior <- levels %>%
   mutate(N_study = purrr::map(data, ~posterior_samples(m1_6sites, 
@@ -161,7 +160,58 @@ cestes_multi4_posterior <- cestes_multi4_posterior %>%
   # add indicator for database
   mutate(db = 'CESTES') %>% 
   select(-data) %>% 
-  unnest(cols = c(N_study, S_study, ENSPIE_study, Sn_study))
+  unnest(cols = c(N_study, S_study, ENSPIE_study, Sn_study)) %>% 
+  ungroup()
+
+cestes_cor <- as.mcmc(m1_6sites, combine_chains = TRUE, 
+                                            pars = "^cor") %>% 
+  as_tibble()
+
+cestes_cor_long <- bind_rows(
+  cestes_cor %>% 
+    select(corS_N = cor_dataset_id__S_newID2__N_newID2,
+           corS_S_PIE = cor_dataset_id__S_newID2__ENSPIE_newID2,
+           corS_Sn = cor_dataset_id__S_newID2__Sn_newID2,
+           corN_S_PIE = cor_dataset_id__N_newID2__ENSPIE_newID2,
+           corSn_N = cor_dataset_id__N_newID2__Sn_newID2,
+           corS_PIE_Sn = cor_dataset_id__Sn_newID2__ENSPIE_newID2) %>% 
+      mutate(newID = '2'),
+  cestes_cor %>% 
+    select(corS_N = cor_dataset_id__S_newID3__N_newID3,
+           corS_S_PIE = cor_dataset_id__S_newID3__ENSPIE_newID3,
+           corS_Sn = cor_dataset_id__S_newID3__Sn_newID3,
+           corN_S_PIE = cor_dataset_id__N_newID3__ENSPIE_newID3,
+           corSn_N = cor_dataset_id__N_newID3__Sn_newID3,
+           corS_PIE_Sn = cor_dataset_id__Sn_newID3__ENSPIE_newID3) %>% 
+      mutate(newID = '3'),
+  cestes_cor %>% 
+    select(corS_N = cor_dataset_id__S_newID4__N_newID4,
+           corS_S_PIE = cor_dataset_id__S_newID4__ENSPIE_newID4,
+           corS_Sn = cor_dataset_id__S_newID4__Sn_newID4,
+           corN_S_PIE = cor_dataset_id__N_newID4__ENSPIE_newID4,
+           corSn_N = cor_dataset_id__N_newID4__Sn_newID4,
+           corS_PIE_Sn = cor_dataset_id__Sn_newID4__ENSPIE_newID4) %>% 
+      mutate(newID = '4'),
+  cestes_cor %>% 
+    select(corS_N = cor_dataset_id__S_newID5__N_newID5,
+           corS_S_PIE = cor_dataset_id__S_newID5__ENSPIE_newID5,
+           corS_Sn = cor_dataset_id__S_newID5__Sn_newID5,
+           corN_S_PIE = cor_dataset_id__N_newID5__ENSPIE_newID5,
+           corSn_N = cor_dataset_id__N_newID5__Sn_newID5,
+           corS_PIE_Sn = cor_dataset_id__Sn_newID5__ENSPIE_newID5) %>% 
+      mutate(newID = '5'),
+  cestes_cor %>% 
+    select(corS_N = cor_dataset_id__S_newID6__N_newID6,
+           corS_S_PIE = cor_dataset_id__S_newID6__ENSPIE_newID6,
+           corS_Sn = cor_dataset_id__S_newID6__Sn_newID6,
+           corN_S_PIE = cor_dataset_id__N_newID6__ENSPIE_newID6,
+           corSn_N = cor_dataset_id__N_newID6__Sn_newID6,
+           corS_PIE_Sn = cor_dataset_id__Sn_newID6__ENSPIE_newID6) %>% 
+      mutate(newID = '6'))
+    
+
+save(cestes_coefs_multi4, cestes_multi4_posterior, cestes_cor_long,
+     file = paste0(path2wd, 'multiComponentChange/results/cestes_multi4_results.Rdata'))
 # 
 # 
 # cestes_S_N <- ggplot() +
@@ -257,3 +307,4 @@ cestes_multi4_posterior <- cestes_multi4_posterior %>%
 #           nrow = 1)
 # ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/cestes_multi4_6sites.png',
 #        width = 240, height = 80, units = 'mm')
+

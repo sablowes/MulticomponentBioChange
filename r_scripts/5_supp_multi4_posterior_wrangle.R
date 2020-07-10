@@ -1,30 +1,30 @@
 # wrangle for supp_supp_multi4c_fit
-load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/results/supp_multi4a-6560307.Rdata')
+load('~/Dropbox/1current/multidimensionalChangeMS/results/supp_multi4a-6560307.Rdata')
 
 # not used...model has no 'global' treatment effect, 
 # so we don't need to add the random effect to anything
 supp_intercept_posterior <- tibble(
   S_intercept = posterior_samples(supp_multi4c_fit,
                                pars = 'b_S_Intercept',
-                               exact = TRUE,
+                               fixed = TRUE,
                                # get every 4th draw of the posterior
                                subset = seq(1, 4000, by = 4)) %>% 
     unlist() %>% as.numeric(),
   ENSPIE_intercept = posterior_samples(supp_multi4c_fit,
                                     pars = 'b_ENSPIE_Intercept',
-                                    exact = TRUE,
+                                    fixed = TRUE,
                                     # get every 4th draw of the posterior
                                     subset = seq(1, 4000, by = 4))
   %>% unlist() %>% as.numeric(),
   Sn_intercept = posterior_samples(supp_multi4c_fit,
                                 pars = 'b_Sn_Intercept',
-                                exact = TRUE,
+                                fixed = TRUE,
                                 # get every 4th draw of the posterior
                                 subset = seq(1, 4000, by = 4))
   %>% unlist() %>% as.numeric(),
   N_intercept = posterior_samples(supp_multi4c_fit,
                                pars = 'b_N_Intercept',
-                               exact = TRUE,
+                               fixed = TRUE,
                                # get every 4th draw of the posterior
                                subset = seq(1, 4000, by = 4))
   %>% unlist() %>% as.numeric()
@@ -39,25 +39,25 @@ supp_trt_levels <- supp_multi4c_fit$data %>%
 supp_trt_sample_posterior <- supp_trt_levels %>%
   mutate(N_trt = purrr::map(data, ~posterior_samples(supp_multi4c_fit, 
                                                        pars = paste('r_group__N[', as.character(.x$level), ',trttreatment]', sep=''),
-                                                       exact = TRUE,
+                                                       fixed = TRUE,
                                                        # want 1000 samples
                                                        subset = seq(1, 4000, by = 4))
                               %>% unlist() %>% as.numeric()),
          Sn_trt = purrr::map(data, ~posterior_samples(supp_multi4c_fit, 
                                                         pars = paste('r_group__Sn[', as.character(.x$level), ',trttreatment]', sep=''),
-                                                        exact = TRUE,
+                                                      fixed = TRUE,
                                                         # want 1000 samples
                                                         subset = seq(1, 4000, by = 4))
                                %>% unlist() %>% as.numeric()),
          S_trt = purrr::map(data, ~posterior_samples(supp_multi4c_fit, 
                                                        pars = paste('r_group__S[', as.character(.x$level), ',trttreatment]', sep=''),
-                                                       exact = TRUE,
+                                                     fixed = TRUE,
                                                        # want 1000 samples
                                                        subset = seq(1, 4000, by = 4))
                               %>% unlist() %>% as.numeric()),
          ENSPIE_trt = purrr::map(data, ~posterior_samples(supp_multi4c_fit, 
                                                             pars = paste('r_group__ENSPIE[', as.character(.x$level), ',trttreatment]', sep=''),
-                                                            exact = TRUE,
+                                                          fixed = TRUE,
                                                             # want 1000 samples
                                                             subset = seq(1, 4000, by = 4))
                                    %>% unlist() %>% as.numeric()))
@@ -191,3 +191,6 @@ supp_sigma_long <- supp_sigma_post %>%
          sigmaENSPIE = sd_group__ENSPIE_trttreatment,
          sigmaSn = sd_group__Sn_trttreatment,
          sigmaS = sd_group__S_trttreatment)
+
+save(supp_intercept_posterior, supp_cor_long, supp_trt_sample_posterior, supp_trt_summary,
+     file = paste0(path2wd, 'multiComponentChange/results/supp_mult4_results.Rdata'))

@@ -6,7 +6,7 @@
 
 user <- Sys.info()["user"]
 path2wd <- switch(user,
-                  "sb25gaqy" = "~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/",
+                  "sb25gaqy" = "~/Dropbox/1current/multidimensionalChangeMS/",
                   'jc155893' = '~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/'
 )
 
@@ -22,7 +22,7 @@ is.error <- function(x) inherits(x, "try-error")
 ############################################################################
 ### Load all needed libraries
 ############################################################################
-
+# TODO: check if all these are required...
 needed_libs <- c("brms",
                  'vegan',
                  "cowplot",
@@ -30,8 +30,8 @@ needed_libs <- c("brms",
                  "iNEXT", # for coverage standardized richness
                  "ggridges",
                  "gridGraphics",
-                 "magick",
-                 "maps",
+                 #"magick",
+                 #"maps",
                  "mobr", # calculation of biodiversity indices
 					       "mobsim", # for random community simulation
                  "tidyverse",
@@ -51,6 +51,7 @@ sapply(needed_libs, usePackage)
 rm(usePackage)
 
 ### document system properties
-session_info() 
+# session_info() 
 
+# gg_theme 
 theme_set(theme_minimal())

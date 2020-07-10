@@ -660,3 +660,5 @@ predicts_cor_long$LU <- factor(predicts_cor_long$LU,
                                           'Pasture',
                                           'Urban'))
 
+# save(SS_LU_multi, PREDICTS_SS_posterior, predicts_cor_long,
+#      file = paste0(path2wd, 'multiComponentChange/results/predicts_multi4_results.Rdata'))

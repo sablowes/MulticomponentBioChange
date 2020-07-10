@@ -1,5 +1,5 @@
 # posterior wrangles for Dani's freshwater data
-Sys.setlocale('LC_ALL','C')
+Sys.setlocale('LC_ALL','C') # Dani!
 
 load(paste0(path2wd, 'results/fwater_multi4_fit.Rdata'))
 
@@ -433,3 +433,5 @@ fwater_cor_long$LU <- factor(fwater_cor_long$LU,
                                           'Agriculture',      
                                           'Forestry',
                                           'Urban'))
+save(fwater_study_LU_multi, fwater_cor_long, fw_study_posterior,
+     file = paste0(path2wd, 'multiComponentChange/results/fwater_multi4_results.Rdata'))

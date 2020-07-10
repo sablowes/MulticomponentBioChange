@@ -1,7 +1,4 @@
-# plot correlations from the fit to fragSAD
-library(brms)
-library(tidyverse)
-
+# prepare results for plotting, etc
 load(paste0(path2wd, 'results/fragSAD_multi4.Rdata'))
 
 # posterior distributions for the 'global' parameters
@@ -190,3 +187,5 @@ fS_cor_long <- fS_posterior_cor %>%
          corS_PIE_Sn = cor_dataset_label__SPIEmean_c.lfs__Snmean_c.lfs
   )
 
+save(fragSAD_study_sample_posterior, fragSAD_study_summary, fragSAD_global_posterior, fS_cor_long,
+     file = paste0(path2wd, 'multiComponentChange/results/fragSAD_multi4_results.Rdata'))

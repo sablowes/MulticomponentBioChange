@@ -166,3 +166,5 @@ btx_sigma_long <- btx_sigma_post %>%
          sigmaS = sd_study_trt__S_cYear) %>% 
   mutate(db = 'Experimental (time series)')
 
+save(btx_study_summary, btx_study_sample_posterior, btx_cor_long,
+     file = paste0(path2wd, 'multiComponentChange/results/btx_multi4_results.Rdata'))
