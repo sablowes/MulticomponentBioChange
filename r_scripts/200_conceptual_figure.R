@@ -1,9 +1,5 @@
 # conceptual illustration of diversity change
-rm(list=ls())
-library(mobr)
-library(mobsim)
-library(tidyverse)
-library(cowplot)
+source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/00_init_dirs_load_packages.R')
 
 s = 1793
 # s = rnbinom(1, 1e-1, mu = 20000) + rpois(1, 10)
@@ -819,5 +815,5 @@ cowplot::plot_grid(top, NULL, middle1, NULL, middle2, NULL, bottom,
                      align = 'hv')
 
 ggsave(paste0('~/Dropbox/1current/multidimensionalChangeMS/Figs/conceptual_seed', s, '_h.png'),
-         width = 270, height = 200, units = 'mm')    
+         width = 270, height = 200, units = 'mm')
   
