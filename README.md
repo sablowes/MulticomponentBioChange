@@ -24,9 +24,9 @@ Files in the data folder include:
 
 **long\_table.csv**: data for *Temporal comparisons: experimental or natural perturbations*. This data is was prepared for analysis by Alban Sagouis, using code available here: <https://github.com/chase-lab/BioTIMEx>
 
-**PREDICTS\_alpha.Rdata**: data for *Spatial comparison: anthropogenic perturbations*; this is the output of 01a\_CESTES\_mcgill\_combine.R
+**PREDICTS\_alpha.Rdata**: data for *Spatial comparison: anthropogenic perturbations*; this is the output of 01\_PREDICTS\_data\_wrangle.R
 
-**spatial\_natural.Rdata**: data for *Spatial comparison: natural environmental variation*; this is the output of 01\_PREDICTS\_data\_wrangle.R
+**spatial\_natural.Rdata**: data for *Spatial comparison: natural environmental variation*; this is the output of 01a\_CESTES\_mcgill\_combine.R
 
 Files in the r\_scripts folder include
 
