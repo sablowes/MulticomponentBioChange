@@ -1,9 +1,9 @@
-# conceptual illustration of diversity change
+# simulate communities for conceptual illustration of diversity change
 source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/00_init_dirs_load_packages.R')
 
 s = 1793
-# s = rnbinom(1, 1e-1, mu = 20000) + rpois(1, 10)
 set.seed(s)
+
 # 1: more individuals
 # 2: more rare species
 # 3: more common and rare species
@@ -54,24 +54,6 @@ reference1 <- bind_cols(assemblage = 'Reference',
          # rarefaction curves (gamma-scale)
          ibr = map(assemblage_map, ~spec_sample_curve(.x, method = c("rare"))))
 
-ref_map <-
-reference1$assemblage_map[[1]]$census %>% 
-  mutate(assemblage = 'Reference') %>% 
-  ggplot() +
-  facet_wrap(~assemblage) + 
-  geom_point(aes(x=x, y = y, colour = species),
-             size = 2.5, alpha = 0.8) +
-  scale_color_manual(values = spp_col) +
-  # scale_color_viridis_d(option = "inferno") +
-  theme_minimal() +
-  coord_fixed(xlim = c(0,1),
-              ylim = c(0,1)) +
-  theme(legend.position = 'none',
-        strip.text = element_blank(),
-        panel.grid = element_blank(),
-        panel.border = element_rect(colour = '#000000', fill = NA),
-        axis.text = element_blank(),
-        axis.title = element_blank())
 
 #------ 1: more individuals (same SAD)---------
 MIH <- bind_cols(assemblage = 'MIH',
@@ -104,27 +86,6 @@ MIH <- bind_cols(assemblage = 'MIH',
                                                       comm = .x)[['ens_simpson']]),
          # rarefaction curves (gamma-scale)
          ibr = map(assemblage_map, ~spec_sample_curve(.x, method = c("rare"))))
-
-MIH_map <-
-MIH$assemblage_map[[1]]$census %>% 
-  mutate(assemblage = 'More individuals') %>% 
-  ggplot() +
-  facet_wrap(~assemblage) + 
-  geom_point(aes(x=x, y = y, colour = species),
-             size = 2.5, alpha = 0.8) +
-  scale_color_manual(values = spp_col) +
-  # scale_color_viridis_d(option = "inferno") +
-  theme_minimal() +
-  coord_fixed(xlim = c(0,1),
-              ylim = c(0,1)) +
-  theme(legend.position = 'none',
-        strip.text = element_blank(),
-        panel.grid = element_blank(),
-        panel.border = element_rect(colour = '#000000', fill = NA),
-        axis.text = element_blank(),
-        axis.title = element_blank(),
-        plot.margin = margin(t = 2))
-
 mih_ibr <-
 bind_rows(reference1 %>%
             unnest(ibr) %>% 
@@ -147,13 +108,13 @@ bind_rows(reference1 %>%
   # scale_y_continuous(breaks = c(1,3,5,7,9)) +
   # scale_x_continuous(breaks = round(seq(1,30,length.out = 5))) +
   labs(x = 'Individuals',
-       y = 'Species') +
+       y = 'Species richness') +
   coord_cartesian(clip = 'off') +
   theme_minimal() +
   theme(panel.grid = element_blank(),
         axis.line = element_line(colour = '#000000'),
         axis.ticks = element_line(colour = '#000000'),
-        axis.title.x = element_text(size = 8),
+        axis.title.x = element_blank(),
         axis.title.y = element_text(size = 8),
         legend.position = 'none', #c(0,1),
         legend.justification = c(0,1), 
@@ -161,12 +122,32 @@ bind_rows(reference1 %>%
         plot.margin = margin(t = 2),
         legend.text = element_text(size = 8))
 
-#----- 2: more rare species (chop off the MIH sample at the reference N)--------
-rare_map <-
-MIH$assemblage_map[[1]]$census %>% 
+#----- 2: more rare species (change a couple of species labels in the reference community)--------
+rare_ass <- reference1
+rare_ass$assemblage_map[[1]]$census[N_initial,]$species = 'species4'
+rare_ass$assemblage_map[[1]]$census[N_initial-1,]$species = 'species5'
+# need to update metrics and the metrics
+rare_ass <- rare_ass %>% 
+    # sample 20 quadrats from each community
+    mutate(sample = map(assemblage_map, ~sample_quadrats(comm = .x, n_quadrats = 20,
+                                                         method = 'random', avoid_overlap = T,
+                                                         plot = F))) %>% 
+      # calculate diversity
+      mutate(N_alpha = map(sample, ~rowSums(.x$spec_dat) %>% as.numeric),
+             S_alpha = map(sample, ~vegan::specnumber(.x$spec_dat)),
+             ENSPIE_alpha = map(sample, ~vegan::diversity(.x$spec_dat, index = 'invsimpson')),
+             N_gamma = map(assemblage_map, ~nrow(.x$census)),
+             S_gamma = map(assemblage_map, ~ div_rect(x0 = 0, y0 = 0, 
+                                                      xsize = 1, ysize = 1, 
+                                                      comm = .x)[['n_species']]),
+             ENSPIE_gamma = map(assemblage_map, ~div_rect(x0 = 0, y0 = 0, 
+                                                          xsize = 1, ysize = 1, 
+                                                          comm = .x)[['ens_simpson']]),
+             # rarefaction curves (gamma-scale)
+             ibr = map(assemblage_map, ~spec_sample_curve(.x, method = c("rare"))))
+# rare_map <-
+rare_ass$assemblage_map[[1]]$census %>% 
   mutate(assemblage = 'More rare species') %>% 
-  # want same N as reference assemblage
-  sample_n(N_initial) %>% 
   ggplot() +
   facet_wrap(~assemblage) + 
   geom_point(aes(x=x, y = y, colour = species),
@@ -177,7 +158,7 @@ MIH$assemblage_map[[1]]$census %>%
   coord_fixed(xlim = c(0,1),
               ylim = c(0,1)) +
   theme(legend.position = 'none',
-        strip.text = element_blank(),
+        strip.text = element_text(hjust=0),
         panel.grid = element_blank(),
         panel.border = element_rect(colour = '#000000', fill = NA),
         axis.text = element_blank(),
@@ -188,7 +169,7 @@ rare_ibr <-
 bind_rows(reference1 %>%
             unnest(ibr) %>% 
             select(assemblage, n, spec_rarefied),
-          MIH %>% 
+          rare_ass %>% 
             unnest(ibr) %>% 
             select(assemblage, n, spec_rarefied) %>% 
             mutate(assemblage = 'More rare species')) %>% 
@@ -207,13 +188,13 @@ bind_rows(reference1 %>%
   # scale_y_continuous(breaks = c(1,3,5,7,9)) +
   # scale_x_continuous(breaks = round(seq(1,30,length.out = 5))) +
   labs(x = 'Individuals',
-       y = 'Species') +
+       y = 'Species richness') +
   coord_cartesian(clip = 'off') +
   theme_minimal() +
   theme(panel.grid = element_blank(),
         axis.line = element_line(colour = '#000000'),
         axis.ticks = element_line(colour = '#000000'),
-        axis.title.x = element_text(size = 8),
+        axis.title.x = element_blank(),
         axis.title.y = element_text(size = 8),
         legend.position = 'none', #c(0,1),
         legend.justification = c(0,1),
@@ -275,7 +256,7 @@ even_map <-
   coord_fixed(xlim = c(0,1),
               ylim = c(0,1)) +
   theme(legend.position = 'none',
-        strip.text = element_blank(),
+        strip.text = element_text(hjust=0),
         panel.grid = element_blank(),
         panel.border = element_rect(colour = '#000000', fill = NA),
         axis.text = element_blank(),
@@ -339,7 +320,7 @@ dom_map =
   theme_minimal() +
   coord_fixed() +
   theme(legend.position = 'none',
-        strip.text = element_blank(),
+        strip.text = element_text(hjust=0),
         panel.grid = element_blank(),
         panel.border = element_rect(colour = '#000000', fill = NA),
         axis.text = element_blank(),
@@ -374,14 +355,14 @@ dom_ibr =
     scale_colour_manual(values = c('Reference' = '#bdbdbd',
                                    'More individuals, less even SAD, no change in richness' = '#e65586'),
                         name = '') +
-    labs(x = 'Individuals',
+    labs(x = 'Abundance (individuals)',
          y = 'Species') +
   coord_cartesian(clip = 'off') +
     theme_minimal() +
     theme(panel.grid = element_blank(),
           axis.line = element_line(colour = '#000000'),
           axis.ticks = element_line(colour = '#000000'),
-          axis.title.x = element_text(size = 8),
+          axis.title.x = element_blank(),
           axis.title.y = element_text(size = 8),
           legend.position = 'none', #c(0,1),
           legend.justification = c(0,1),
@@ -432,7 +413,7 @@ dom2_map <-
     coord_fixed(xlim = c(0,1),
                 ylim = c(0,1)) +
     theme(legend.position = 'none',
-          strip.text = element_blank(),
+          strip.text = element_text(hjust=0),
           panel.grid = element_blank(),
           panel.border = element_rect(colour = '#000000', fill = NA),
           axis.text = element_blank(),
@@ -461,7 +442,7 @@ dom2_ibr <-
                         name = '') +
     # scale_y_continuous(breaks = c(1,3,5,7,9)) +
     # scale_x_continuous(breaks = round(seq(1,30,length.out = 5))) +
-    labs(x = 'Individuals',
+    labs(x = 'Abundance (individuals)',
          y = 'Species') +
     theme_minimal() +
   coord_cartesian(clip = 'off') +
@@ -520,8 +501,7 @@ dom3_map <-
   coord_fixed(xlim = c(0,1),
               ylim = c(0,1)) +
   theme(legend.position = 'none',
-        strip.text = element_blank(),#element_text(face = 'bold',hjust = 0, size = 8, 
-                                  # margin = margin(t = 0, r = 20, b = 1, l = 0, unit = 'mm')),
+        strip.text = element_text(hjust=0),
         panel.grid = element_blank(),
         panel.border = element_rect(colour = '#000000', fill = NA),
         plot.margin = margin(t = 2),
@@ -564,54 +544,51 @@ dom3_ibr <-
   
 
 #-----combine ------
-ref_label <- ggdraw() + 
-  cowplot::draw_label('i. Reference', fontface = 'plain', size = 10, hjust = 0, x = 0.1)
-mih_label <- ggdraw() + 
-  cowplot::draw_label('ii. More individuals', fontface = 'plain', size = 10, hjust = 0, x = 0)
-rare_label <- ggdraw() + 
-  cowplot::draw_label('iii. More rare species', fontface = 'plain', size = 10, hjust = 0, x = 0)
-even_label <- ggdraw() + 
-  cowplot::draw_label('iv. More even SAD', fontface = 'plain', size = 10, hjust = 0, x = 0)
-d1_label <- ggdraw() + 
-  cowplot::draw_label('v. More individuals, less even SAD, same richness', fontface = 'plain', size = 10, hjust = 0, x = 0)
-d2_label <- ggdraw() + 
-  cowplot::draw_label('vi. More individuals, less even SAD, fewer species', fontface = 'plain', size = 10, hjust = 0, x = 0)
-d3_label <- ggdraw() + 
-  cowplot::draw_label('vii. More individuals, less even SAD, more species', fontface = 'plain', size = 10, hjust = 0, x = 0)
-
-ref_panel = plot_grid(ref_label,
-                      ref_map, rel_heights = c(0.1,1), ncol = 1, align = 'v', axis = 'l')
-r1 = plot_grid(mih_label,
-          plot_grid(MIH_map, mih_ibr, ncol = 2, rel_widths = c(1,1)),
-          rel_heights = c(0.1,1), ncol = 1, align = 'v', axis = 'l')
-r2 = plot_grid(rare_label,
-               plot_grid(rare_map, rare_ibr, ncol = 2, rel_widths = c(1,1)), 
-               rel_heights = c(0.1,1), ncol = 1, align = 'v', axis = 'l')
-r3 = plot_grid(even_label,
-               plot_grid(even_map, even_ibr, ncol = 2, rel_widths = c(1,1)), 
-               rel_heights = c(0.1,1), ncol = 1, align = 'v', axis = 'l')
-r4 = plot_grid(d1_label,
-               plot_grid(dom_map, dom_ibr, ncol = 2, rel_widths = c(1,1)), 
-               rel_heights = c(0.1,1), ncol = 1, align = 'v', axis = 'l')
-r5 = plot_grid(d2_label,
-               plot_grid(dom2_map, dom2_ibr, ncol = 2, rel_widths = c(1,1)), 
-               rel_heights = c(0.1,1), ncol = 1, align = 'v', axis = 'l')
-r6 = plot_grid(d3_label,
-               plot_grid(dom3_map, dom3_ibr, ncol = 2, rel_widths = c(1,1)), 
-               rel_heights = c(0.1,1), ncol = 1, align = 'v', axis = 'l')
+# ref_label <- ggdraw() + 
+#   cowplot::draw_label('i. Reference', fontface = 'plain', size = 10, hjust = 0, x = 0.1)
+# mih_label <- ggdraw() + 
+#   cowplot::draw_label('ii. More individuals', fontface = 'plain', size = 10, hjust = 0, x = 0)
+# rare_label <- ggdraw() + 
+#   cowplot::draw_label('iii. More rare species', fontface = 'plain', size = 10, hjust = 0, x = 0)
+# even_label <- ggdraw() + 
+#   cowplot::draw_label('iv. More even SAD', fontface = 'plain', size = 10, hjust = 0, x = 0)
+# d1_label <- ggdraw() + 
+#   cowplot::draw_label('v. More individuals, less even SAD, same richness', fontface = 'plain', size = 10, hjust = 0, x = 0)
+# d2_label <- ggdraw() + 
+#   cowplot::draw_label('vi. More individuals, less even SAD, fewer species', fontface = 'plain', size = 10, hjust = 0, x = 0)
+# d3_label <- ggdraw() + 
+#   cowplot::draw_label('vii. More individuals, less even SAD, more species', fontface = 'plain', size = 10, hjust = 0, x = 0)
 
 
-middle1 = cowplot::plot_grid(NULL, r1, NULL, r2, NULL, r3, NULL, 
-                             nrow = 1,
-                             rel_widths = c(0.05,1,0.05,1,0.05,1,0.05))
-                             
-middle2 = cowplot::plot_grid(NULL, r4, NULL, r5, NULL, r6, NULL, 
-                             nrow = 1,
-                             rel_widths = c(0.05,1,0.05,1,0.05,1,0.05))
+plot_grid(ref_map, mih_ibr, ncol = 2)
 
+r1 = plot_grid(ref_map, MIH_map, mih_ibr, ncol = 3,  
+          rel_widths = c(1,1,1), rel_heights = c(1,1,1), align = 'hv')
 
-top = cowplot::plot_grid(NULL, ref_panel, NULL,
-                          nrow = 1)
+r2 = plot_grid(ref_map, rare_map, rare_ibr, ncol = 3,
+               rel_widths = c(1,1,1), rel_heights = c(1,1,1), align = 'hv')
+
+r3 = plot_grid(ref_map, even_map, even_ibr, ncol = 3,
+               rel_widths = c(1,1,1), rel_heights = c(1,1,1), align = 'hv')
+
+r4 = plot_grid(ref_map, dom_map, dom_ibr, ncol = 3,
+               rel_widths = c(1,1,1), rel_heights = c(1,1,1), align = 'hv')
+
+r5 = plot_grid(ref_map, dom2_map, dom2_ibr, ncol = 3,
+               rel_widths = c(1,1,1), rel_heights = c(1,1,1), align = 'hv')
+
+r6 = plot_grid(ref_map, dom3_map, dom3_ibr, ncol = 3,
+               rel_widths = c(1,1,1), rel_heights = c(1,1,1), align = 'hv')
+
+top = plot_grid(NULL, metric_intro, NULL,
+                rel_widths = c(0.5, 1, 0.5), nrow = 1)
+plot_grid(top,
+          r1, r2, r3, r4, r5, r6,
+          nrow = 7,
+          rel_widths = c(1/3, 1,1,1,1,1,1))
+
+ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/conceptual2.png',
+       width = 170, height = 290, units = 'mm')
 
 # cowplot::plot_grid(left, right_combo,
 #                    ncol = 2, 
@@ -809,7 +786,8 @@ bottom <- cowplot::plot_grid(NULL, S_N_ES_plot +
                                                fontface = 'bold' ), NULL,
                                   nrow = 1, rel_widths = c(0.3,1,1,1,0.3))
 
-cowplot::plot_grid(top, NULL, middle1, NULL, middle2, NULL, bottom,
+cowplot::plot_grid(metric_intro,
+                   top, NULL, middle1, NULL, middle2, NULL, bottom,
                      nrow = 7, 
                      rel_heights = c(0.67,0.1, 0.6,0.1, 0.6, 0.1, 1.2),
                      align = 'hv')
