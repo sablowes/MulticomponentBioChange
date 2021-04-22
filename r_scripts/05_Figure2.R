@@ -104,9 +104,9 @@ ref_MIH_map <-
         strip.text = element_text(hjust = 0, size = 10),
         panel.grid = element_blank(),
         panel.border = element_rect(colour = '#000000', fill = NA),
+        # plot.margin = unit(c(0, 0, 0, 2.5), units = 'cm'), # manuscript central adds line numbers to figures?
         axis.text = element_blank(),
-        axis.title = element_blank(),
-        plot.margin = margin(t = 2))
+        axis.title = element_blank())
 
 
 mih_ibr <-
@@ -199,6 +199,7 @@ reference1$assemblage_map[[1]]$census %>%
         axis.text = element_blank(),
         axis.title = element_blank())
 
+
 #----- 2: more rare species (change a couple of species labels in the reference community)--------
 rare_ass <- reference1
 rare_ass$assemblage_map[[1]]$census$species <- as.character(rare_ass$assemblage_map[[1]]$census$species)
@@ -263,7 +264,7 @@ bind_rows(reference1 %>%
                       name = '') +
   # scale_y_continuous(breaks = c(1,3,5,7,9)) +
   # scale_x_continuous(breaks = round(seq(1,30,length.out = 5))) +
-  labs(x = 'Abundance (individuals)',
+  labs(x = 'Abundance [individuals]',
        y = 'Species') +
   coord_cartesian(clip = 'off') +
   theme_minimal() +
@@ -291,7 +292,7 @@ even_comm <- community(x = unlist(reference1$assemblage_map[[1]]$census['x']),
                                    rep('species8', times = 2)))
 even_map <-
   even_comm[[1]] %>% 
-  mutate(assemblage = 'Altered SAD') %>% 
+  mutate(assemblage = 'More even') %>% 
   ggplot() +
   facet_wrap(~assemblage) + 
   geom_point(aes(x=x, y = y, colour = species),
@@ -364,7 +365,7 @@ dom_map =
   theme_minimal() +
   coord_fixed() +
   theme(legend.position = 'none',
-        strip.text = element_text(hjust = 0, size = 10),
+        strip.text = element_text(hjust = 0, size = 8),
         panel.grid = element_blank(),
         panel.border = element_rect(colour = '#000000', fill = NA),
         axis.text = element_blank(),
@@ -543,7 +544,7 @@ dom3_map <-
   coord_fixed(xlim = c(0,1),
               ylim = c(0,1)) +
   theme(legend.position = 'none',
-        strip.text = element_text(hjust = 0, size = 10),
+        strip.text = element_text(hjust = 0, size = 8),
         panel.grid = element_blank(),
         panel.border = element_rect(colour = '#000000', fill = NA),
         plot.margin = margin(t = 2),
@@ -812,10 +813,12 @@ top = plot_grid(r1, r2, r3,
                 labels = c('d', 'e', 'f', 'g',
                            'h', 'i'),
                 align = 'hv')
-plot_grid(bottom,
-          top, nrow = 2, rel_heights = c(3/7, 1))
+plot_grid(NULL, # NULL panels to add white space for manuscript central snafu
+          plot_grid(NULL, bottom,
+          top, NULL, nrow = 4, rel_heights = c(0.05, 0.55, 1, 0.05)),
+          NULL, nrow = 1, rel_widths = c(0.05, 1, 0.02))
 
 ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/submission/Fig2.pdf',
-         width = 340, height = 230, units = 'mm')
+         width = 350, height = 230, units = 'mm')
 
   

@@ -295,12 +295,14 @@ spatial_gradient_cor <-
 
 
 
-cowplot::plot_grid(bt_cor_plot, btx_cor_plot, 
-                   spatial_gradient_cor, predicts_cor_plot_simple,
-                   # space4time_cor,fragSAD_cor_plot, supp_cor_plot,
-                           ncol = 2,
-                           align = 'hv') +
-  draw_label(y = 0.015, label = 'Correlation')
+plot_grid(NULL,
+          plot_grid(NULL,
+                    plot_grid(bt_cor_plot, btx_cor_plot, nrow = 1),
+                    plot_grid(spatial_gradient_cor, predicts_cor_plot_simple, nrow = 1),
+                    NULL,
+                    nrow = 4, rel_heights = c(0.1, 1, 1, 0.1), align = 'hv'),
+          NULL, nrow = 1, rel_widths = c(0.1, 1, 0.1)) +
+  draw_label(y = 0.05, label = 'Correlation')
 
 ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/submission/Fig5.pdf',
-       width = 200, height = 180, units = 'mm')
+       width = 220, height = 200, units = 'mm')

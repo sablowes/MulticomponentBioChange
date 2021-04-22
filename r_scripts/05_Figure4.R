@@ -603,17 +603,19 @@ space4_cols = plot_grid(space_t4,
                                   ncol = 3),
                         ncol = 1, rel_heights = c(0.01, 1))
 
-plot_grid(leg, time1_cols, time2_cols, 
-          space4_cols, space1_cols, 
-          #space2_cols, space3_cols, 
-          nrow = 5,
+plot_grid(NULL,
+          plot_grid(NULL, 
+                    leg, time1_cols, time2_cols, 
+                    space4_cols, space1_cols,
+          nrow = 6,
           align = 'hv',
-          rel_heights = c(0.15, 1,1,1,1)) +
-  draw_label(x = 0.015, label = expression(paste('Change in species richness [log(S)]', sep = '')),
+          rel_heights = c(0.2, 0.2, 1,1,1,1)),
+          NULL, nrow = 1, rel_widths = c(0.075, 1, 0.02)) +
+  draw_label(x = 0.075, label = expression(paste('Change in species richness [log(S)]', sep = '')),
              angle = 90)
 
 ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/submission/Fig4.pdf',
-       height = 290, width = 240, units = 'mm')
+       height = 300, width = 240, units = 'mm')
 
 # Sn ~ S_PIE
 Sn_S_PIE_2d_post_density_time1 <-

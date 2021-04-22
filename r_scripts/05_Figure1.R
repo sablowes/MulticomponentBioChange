@@ -92,6 +92,7 @@ ggplot() +
         axis.text = element_blank(),
         axis.title.x = element_text(size = 14),
         axis.title.y = element_text(size = 14),
+        plot.margin = unit(c(1, 1, 1, 2.5), units = 'cm'), # manuscript central adds line numbers to figures?!
         legend.position = 'none')
 
 ggsave(paste0(path2wd, 'Figs/submission/Fig1.pdf'),

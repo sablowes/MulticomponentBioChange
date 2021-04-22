@@ -92,7 +92,7 @@ ggplot() +
         legend.justification = c(1,0),
         axis.text = element_text(size = 12), axis.title = element_text(size = 12),
         # panel.grid = element_blank(),
-        plot.margin = margin(10,12,1,1)
+        plot.margin = margin(30,30,30,70)
         )
 
 ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/submission/Fig3.pdf',
