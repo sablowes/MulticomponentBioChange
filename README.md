@@ -13,8 +13,7 @@ This repository includes R code to reproduce the analyses shown in the article:
 
 Here we give a brief overview on the code and data files in this repository.
 
-Data
-----
+## Data
 
 Files in the data folder include:
 
@@ -27,6 +26,8 @@ Files in the data folder include:
 **PREDICTS\_alpha.Rdata**: data for *Spatial comparison: anthropogenic perturbations*; this is the output of 01\_PREDICTS\_data\_wrangle.R
 
 **spatial\_natural.Rdata**: data for *Spatial comparison: natural environmental variation*; this is the output of 01a\_CESTES\_mcgill\_combine.R
+
+## Code
 
 Files in the r\_scripts folder include
 
@@ -43,6 +44,8 @@ Files in the r\_scripts folder include
 05\_: scripts to present results: figures and supplemental table.
 
 200\_: script to generate data for conceptual figure.
+
+## Results
 
 Files in the results folder include:
 
