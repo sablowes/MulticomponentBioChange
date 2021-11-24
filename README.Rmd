@@ -39,6 +39,7 @@ Files in the data folder include:
 **spatial_natural.Rdata**: data for *Spatial comparison: natural environmental variation*; this is the output of 01a_CESTES_mcgill_combine.R
 
 
+## Code 
 Files in the r_scripts folder include
 
 00_: script to load packages and set working directory
@@ -55,6 +56,7 @@ Files in the r_scripts folder include
 
 200_: script to generate data for conceptual figure.
 
+## Results
 Files in the results folder include:
 
 **bt_multi4_pois3_lnorm_results.Rdata**: output of 04_bt_multi4_posterior_wrangle.R
