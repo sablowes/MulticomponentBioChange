@@ -6,7 +6,8 @@
 
 user <- Sys.info()["user"]
 path2wd <- switch(user,
-                  "sb25gaqy" = "~/Dropbox/1current/multidimensionalChangeMS/"
+                  "sb25gaqy" = "~/Dropbox/1current/multidimensionalChangeMS/",
+                  "jc155893" = "~/Dropbox/1current/multidimensionalChangeMS/"
 )
 
 setwd(path2wd)

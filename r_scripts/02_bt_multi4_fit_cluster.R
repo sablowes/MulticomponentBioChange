@@ -13,6 +13,8 @@ library(tidyr)
 ## the data
 # load('~/Dropbox/1current/BioTime/multidimensionalChangeMS/data_model_fits/rarefied_medians_count.Rdata')
 load('/data/idiv_chase/sablowes/multiC_alpha/resamps/rarefied_medians_count.Rdata')
+rarefied_medians_count <- rarefied_medians_count %>% 
+  filter(STUDY_ID!=70)
 ##======================================================================		
 ##	set some weakly regularising priors...
 hier_prior <- c(set_prior(prior = 'normal(0,0.2)', class='b', coef='cYEAR',resp = 'S'), 	# global slope
@@ -46,8 +48,8 @@ multi4_fit <- brm(S_formula + N_formula + ENSPIE_formula + Sn_formula +
 	  mutate(ENSPIE = round(ENSPIE),
 		 Sn = round(Sn)),
 	prior=hier_prior,
-	inits = '0',
-	#init_r = 0.001,
+	# inits = '0',
+	init_r = 0.01,
 	control = list(adapt_delta=0.95),
 	cores = 4,
 	chains = 4)

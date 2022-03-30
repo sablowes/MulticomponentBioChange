@@ -32,11 +32,11 @@ S_N_2d_post_density_time1 <-
                      y = S_study + S_global,
                      fill = 'S_N'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = bt_study_summary %>% 
                filter(componentChange=='No change'),
              aes(x = N_slope, y = S_slope, colour = 'No change'),
@@ -71,11 +71,11 @@ S_N_2d_post_density_time2 <-
                      y = S_study,
                      fill = 'S_N'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = btx_study_summary %>% 
                filter(componentChange=='No change'),
              aes(x = N_slope,
@@ -117,11 +117,11 @@ S_N_2d_post_density_space1 <-
                      y = S_global + S,
                      fill = 'S_N'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = SS_LU_multi_filtered %>% 
                filter(LU!='Primary vegetation' & Sn > -2 & componentChange=='No change'),
              aes(x = N,
@@ -160,11 +160,11 @@ S_N_2d_post_density_space4 <- ggplot() +
                      y = S_study,
                      fill = 'S_N'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = spat_coefs_multi4_filtered %>% 
                filter(componentChange=='No change'),
              aes(x = N, y = S, colour = 'No change'),
@@ -201,11 +201,11 @@ S_Sn_2d_post_density_time1 <-
                      y = S_study + S_global,
                      fill = 'S_Sn'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = bt_study_summary %>% 
                filter(componentChange=='No change'),
              aes(x = Sn_slope, y = S_slope, colour = 'No change'),
@@ -239,11 +239,11 @@ S_Sn_2d_post_density_time2 <- ggplot() +
                      y = S_study,
                      fill = 'S_Sn'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = btx_study_summary %>% 
                filter(componentChange=='No change'),
              aes(x = Sn_slope,
@@ -284,11 +284,11 @@ S_Sn_2d_post_density_space1 <- ggplot() +
                      y = S_global + S,
                      fill = 'S_Sn'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = SS_LU_multi_filtered %>% 
                filter(LU!='Primary vegetation' & Sn > -2 & componentChange=='No change'),
              aes(x = Sn,
@@ -326,11 +326,11 @@ S_Sn_2d_post_density_space4 <- ggplot() +
                      y = S_study,
                      fill = 'S_Sn'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = spat_coefs_multi4_filtered %>% 
                filter(componentChange=='No change'),
              aes(x = Sn, y = S, colour = 'No change'),
@@ -366,11 +366,11 @@ S_S_PIE_2d_post_density_time1 <-
                      y = S_study + S_global,
                      fill = 'S_S_PIE'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = bt_study_summary %>% 
                filter(componentChange=='No change'),
              aes(x = ENSPIE_slope, y = S_slope, colour = 'No change'),
@@ -405,11 +405,11 @@ S_S_PIE_2d_post_density_time2 <- ggplot() +
                      y = S_study,
                      fill = 'S_S_PIE'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = btx_study_summary %>% 
                filter(componentChange=='No change'),
              aes(x = ENSPIE_slope,
@@ -447,11 +447,11 @@ S_S_PIE_2d_post_density_space1 <- ggplot() +
                      y = S_global + S,
                      fill = 'S_S_PIE'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = SS_LU_multi_filtered %>% 
                filter(LU!='Primary vegetation' & Sn > -2 & componentChange=='No change'),
              aes(x = S_PIE,
@@ -490,11 +490,11 @@ S_S_PIE_2d_post_density_space4 <- ggplot() +
                      y = S_study,
                      fill = 'S_S_PIE'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = spat_coefs_multi4_filtered %>% 
                filter(componentChange=='No change'),
              aes(x = ENSPIE, y = S, colour = 'No change'),
@@ -529,12 +529,13 @@ colour_legend <- ggplot() +
              size = 0.75) +
   geom_point(data = spat_coefs_multi4_filtered %>% 
                filter(componentChange!='No change') %>% 
-               mutate(deltaN_ENSPIE_sign = sign(N) * sign(ENSPIE)),
+               mutate(deltaN_ENSPIE_sign = sign(N) * sign(ENSPIE)) %>% 
+               filter(deltaN_ENSPIE_sign==-1),
              aes(x = ENSPIE, y = S, colour = as.character(deltaN_ENSPIE_sign)),
              size = 0.75) +
-  scale_colour_manual(values = c('No change' = '#d9d9d9',
-                                 '-1' = '#252525',
-                                 '1' = '#737373'),
+  scale_colour_manual(values = c('-1' = '#252525',
+                                 '1' = '#737373',
+                                 'No change' = '#d9d9d9'),
                       name = '',
                       labels = c(expression(paste('One or more component change differs from zero, ', Delta, N, ' & ', Delta, S[PIE], ' have different signs')),
                                  expression(paste('One or more component change differs from zero, ', Delta, N, ' & ', Delta, S[PIE], ' have same signs')),
@@ -614,7 +615,7 @@ plot_grid(NULL,
   draw_label(x = 0.075, label = expression(paste('Change in species richness [log(S)]', sep = '')),
              angle = 90)
 
-ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/submission/Fig4.pdf',
+ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/revision/Fig3.pdf',
        height = 300, width = 240, units = 'mm')
 
 # Sn ~ S_PIE
@@ -627,11 +628,11 @@ Sn_S_PIE_2d_post_density_time1 <-
                      y = Sn_study + Sn_global,
                      fill = 'S_PIE_Sn'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = bt_study_summary %>% 
                filter(componentChange=='No change'),
              aes(x = ENSPIE_slope, y = Sn_slope, colour = 'No change'),
@@ -667,11 +668,11 @@ Sn_S_PIE_2d_post_density_time2 <-
                      y = Sn_study,
                      fill = 'S_PIE_Sn'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = btx_study_summary %>% 
                filter(componentChange=='No change'),
              aes(x = ENSPIE_slope,
@@ -714,11 +715,11 @@ Sn_S_PIE_2d_post_density_space1 <-
                      y = Sn_global + Sn,
                      fill = 'S_PIE_Sn'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = SS_LU_multi_filtered %>% 
                filter(LU!='Primary vegetation' & Sn > -2) %>% 
                filter(componentChange=='No change'),
@@ -761,11 +762,11 @@ Sn_S_PIE_2d_post_density_space4 <- ggplot() +
                      y = Sn_study,
                      fill = 'S_PIE_Sn'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = spat_coefs_multi4_filtered %>% 
                filter(componentChange=='No change'),
              aes(x = ENSPIE, y = Sn, colour = 'No change'),
@@ -803,11 +804,11 @@ Sn_N_2d_post_density_time1 <-
                      x = N_study + N_global,
                      fill = 'Sn_N'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = bt_study_summary %>% 
                filter(componentChange=='No change'),
              aes(y = Sn_slope, x = N_slope, colour = 'No change'),
@@ -843,11 +844,11 @@ Sn_N_2d_post_density_time2 <-
                      x = N_study,
                      fill = 'Sn_N'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = btx_study_summary %>% 
                filter(componentChange=='No change'),
              aes(y = Sn_slope,
@@ -890,11 +891,11 @@ Sn_N_2d_post_density_space1 <-
                      x = N_global + N,
                      fill = 'Sn_N'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = SS_LU_multi_filtered %>% 
                filter(LU!='Primary vegetation' & Sn > -2) %>% 
                filter(componentChange=='No change'),
@@ -936,11 +937,11 @@ Sn_N_2d_post_density_space4 <- ggplot() +
                      x = N_study,
                      fill = 'Sn_N'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = spat_coefs_multi4_filtered %>% 
                filter(componentChange=='No change'),
              aes(y = Sn, x = N, colour = 'No change'),
@@ -977,11 +978,11 @@ S_PIE_N_2d_post_density_time1 <-
                      x = N_study + N_global,
                      fill = 'N_S_PIE'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = bt_study_summary %>% 
                filter(componentChange=='No change'),
              aes(y = ENSPIE_slope, x = N_slope, colour = 'No change'),
@@ -1017,11 +1018,11 @@ S_PIE_N_2d_post_density_time2 <-
                      x = N_study,
                      fill = 'N_S_PIE'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = btx_study_summary %>% 
                filter(componentChange=='No change'),
              aes(y = ENSPIE_slope,
@@ -1064,11 +1065,11 @@ S_PIE_N_2d_post_density_space1 <-
                      x = N_global + N,
                      fill = 'N_S_PIE'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   }, 
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +  
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +  
   geom_point(data = SS_LU_multi_filtered %>% 
                filter(LU!='Primary vegetation' & Sn > -2) %>% 
                filter(componentChange=='No change'),
@@ -1110,11 +1111,11 @@ S_PIE_N_2d_post_density_space4 <- ggplot() +
                      x = N_study,
                      fill = 'N_S_PIE'),
                  geom  = "polygon", type = "norm",
-                 size  = 0, alpha = .33,
+                 size  = 0, alpha = .25,
                  level = level)
   },
   # Enter the levels here
-  level = seq(from = 0.05, to = 0.95, by = 0.1)) +
+  level = seq(from = 0.05, to = 0.95, by = 0.9)) +
   geom_point(data = spat_coefs_multi4_filtered %>% 
                filter(componentChange=='No change'),
              aes(y = ENSPIE, x = N, colour = 'No change'),
@@ -1196,5 +1197,5 @@ plot_grid(leg,
           rel_widths = c(1,0.5)),
           nrow = 2, rel_heights = c(0.05, 1))
 
-ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/FigSx_scatter_rPurschke.png',
+ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/revision/FigSx.pdf',
        height = 290, width = 240, units = 'mm')
