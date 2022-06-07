@@ -72,7 +72,7 @@ ggplot() +
                                  'S_PIE_Sn' = '#fdc086',
                                  'N_S_PIE' = '#7fc97f')) +
   labs(x = '',
-       title = 'Temporal change: natural variation',
+       title = 'Temporal changes: natural variation',
        # subtitle = 'Strength of relationships between components changing through time',
        tag = 'a') +
   theme_minimal() +
@@ -140,7 +140,7 @@ btx_cor_plot <-
                                  'S_PIE_Sn' = '#fdc086',
                                  'N_S_PIE' = '#7fc97f')) +
   labs(x = '',
-       title = 'Temporal change: perturbed environments',
+       title = 'Temporal changes: perturbed environments',
        # subtitle = 'Strength of relationships between components changing through time',
        tag = 'b') +
   theme_minimal() +
@@ -211,7 +211,7 @@ ggplot() +
                                  'S_PIE_Sn' = '#fdc086',
                                  'N_S_PIE' = '#7fc97f')) +
   labs(x = '',
-       title = 'Spatial change: land use change',
+       title = 'Spatial comparisons: land use change',
        tag = 'd') +
   theme_minimal() +
   theme(legend.position = 'none',
@@ -284,7 +284,7 @@ spatial_gradient_cor <-
                                  'S_PIE_Sn' = '#fdc086',
                                  'N_S_PIE' = '#7fc97f')) +
   labs(x = '',
-       title = 'Spatial change: natural variation',
+       title = 'Spatial comparisons: natural variation',
        tag = 'c') +
   theme_minimal() +
   theme(legend.position = c(0,0.6),
@@ -304,5 +304,5 @@ plot_grid(NULL,
           NULL, nrow = 1, rel_widths = c(0.1, 1, 0.1)) +
   draw_label(y = 0.05, label = 'Correlation')
 
-ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/submission/Fig5.pdf',
+ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/revision/Fig4.pdf',
        width = 220, height = 200, units = 'mm')

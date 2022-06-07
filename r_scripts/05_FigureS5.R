@@ -43,10 +43,10 @@ prop_change <- bind_rows(
 ggplot() +
   facet_wrap(~factor(db, levels = c('BioTIME', 'Experimental (time series)',
                                     'Spatial gradients', 'PREDICTS'),
-                     labels = c('a. Temporal change: natural variation',
-                                'b. Temporal change: perturbed environments',
-                                'c. Spatial change: natural variation',
-                                'd. Spatial change: land use change')),
+                     labels = c('a. Temporal changes: natural variation',
+                                'b. Temporal changes: perturbed environments',
+                                'c. Spatial comparisons: natural variation',
+                                'd. Spatial comparisons: land use change')),
              ncol = 2)+
   geom_bar(data = prop_change %>% filter(componentChange!='No change'),
            aes(x = componentChange,
@@ -95,7 +95,7 @@ ggplot() +
         plot.margin = margin(30,30,30,70)
         )
 
-ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/submission/Fig3.pdf',
+ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/revision/FigS5.pdf',
        width = 290, height = 200, units = 'mm')
 
 

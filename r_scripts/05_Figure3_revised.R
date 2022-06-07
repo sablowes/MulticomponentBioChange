@@ -550,23 +550,23 @@ leg <- gg_legend(colour_legend)
 
 # some titles for each row
 time_t1 <- ggdraw() +
-  draw_label('Temporal change: natural variation',
+  draw_label('Temporal changes: natural variation',
              x = 0.05, y = 0.01, hjust = 0, size = 12) +
   theme(plot.margin = margin(0,0,0,5))
 
 time_t2 <- ggdraw() +
-  draw_label('Temporal change: perturbed environments',
+  draw_label('Temporal changes: perturbed environments',
              x = 0.05, y = 0.01, hjust = 0, size = 12) +
   theme(plot.margin = margin(0,0,0,5))
 
 space_t1 <- ggdraw() +
-  draw_label('Spatial change: land use change',
+  draw_label('Spatial comparisons: land use change',
              x = 0.05, y = 0.01, hjust = 0, size = 12) +
   theme(plot.margin = margin(0,0,0,5))
 
 
 space_t4 <- ggdraw() +
-  draw_label('Spatial change: natural variation',
+  draw_label('Spatial comparisons: natural variation',
              x = 0.05, y = 0.01, hjust = 0, size = 12) +
   theme(plot.margin = margin(0,0,0,5))
 
@@ -1197,5 +1197,5 @@ plot_grid(leg,
           rel_widths = c(1,0.5)),
           nrow = 2, rel_heights = c(0.05, 1))
 
-ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/revision/FigSx.pdf',
+ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/revision/FigS6.pdf',
        height = 290, width = 240, units = 'mm')

@@ -47,10 +47,10 @@ ggplot() +
   geom_line(data = fig1_df %>% filter(concept=='A' & community=='A'),
             aes(x = N, y = Sn),
             size = 1.25) +
-  geom_point(data = fig1_df %>% filter(concept=='A' & community=='A'),
-            aes(x = max(N), y = max(Sn)),
-            size = 3.25, stroke = 1.5,
-            shape = 4) +
+  # geom_point(data = fig1_df %>% filter(concept=='A' & community=='A'),
+  #           aes(x = max(N), y = max(Sn)),
+  #           size = 3.25, stroke = 1.5,
+  #           shape = 4) +
   geom_line(data = fig1_df %>% filter(concept=='B' & community=='A') %>% slice(1:70),
             aes(x = N, y = Sn),
             size = 1.25, colour = '#bdbdbd') +
@@ -89,7 +89,8 @@ ggplot() +
            label = 'Delta*N', parse = T, size = 5) +
   labs(x = 'Abundance [number of individuals]',
        y = 'Expected number of species',
-       tag = '(a)') +
+       # tag = '(a)'
+       ) +
   theme_minimal() +
   theme(panel.grid = element_blank(),
         axis.line = element_line(colour = '#000000'),
