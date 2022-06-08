@@ -65,7 +65,8 @@ Files in the results folder include:
 
 **predicts_multi4_results.Rdata**: output of 04_PREDICTS_multi_coef_wrangle.R
 
-**spatial_multi4_results.Rdata**: output of 04_spat_natural_multi4_posterior_wrangle.R---
+**spatial_multi4_results.Rdata**: output of 04_spat_natural_multi4_posterior_wrangle.R
+
 
 ---
 title: "BioTIMEx"
@@ -96,7 +97,6 @@ Suitable data sets were individually downloaded from R. Scripts managing these d
 if(!dir.exists('data/raw data/'))   dir.create('data/raw data/')
 listF <- list.files('./R/data download', pattern = ".R|.r", full.names = TRUE)
 lapply(listF, function(fullPath) source(fullPath, encoding = 'UTF-8', echo = FALSE, local = TRUE))
-
 ```
 
 All downloaded data sets are saved in separate folders named following the convention `author_year`.
