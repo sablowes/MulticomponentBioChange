@@ -1,4 +1,73 @@
 ---
+title: "Characterising multicomponent biodiversity change"
+author: "Shane Blowes"
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This repository includes R code to reproduce the analyses shown in the article: 
+
+**Local biodiversity change reflects interactions among changing abundance, evenness and richness**
+
+*by Shane A. Blowes, Gergana N. Daskalova, Maria Dornelas, Thore Engel, Nicholas J. Gotelli, Anne Magurran, Inês S. Martins, Brian McGill, Daniel J. McGlinn, Alban Sagouis, Hideyasu Shimadzu, Sarah R. Supp, and Jonathan M. Chase*
+
+Here we give a brief overview on the code and data files in this repository.
+
+## Data
+
+Files in the data folder include:
+
+**conceptual_communities.Rdata**: simulated data to reproduce Figure 1.
+
+**conceptual_figure_dat.Rdata**: simulated data to reproduce Figure 2.
+
+**long_table.csv**: data for *Temporal comparisons: experimental or natural perturbations*. This data is was prepared for analysis by Alban Sagouis, using code available here: https://github.com/chase-lab/BioTIMEx
+
+**PREDICTS_alpha.Rdata**: data for *Spatial comparison: anthropogenic perturbations*; this is the output of 01_PREDICTS_data_wrangle.R 
+
+**spatial_natural.Rdata**: data for *Spatial comparison: natural environmental variation*; this is the output of 01a_CESTES_mcgill_combine.R
+
+
+## Code 
+Files in the r_scripts folder include
+
+00_: script to load packages and set working directory
+
+01_: scripts to prepare data for analyses. BioTIME data were prepared using code available here: https://github.com/sChange-workshop/BioGeo-BioDiv-Change. Perturbed time series data were compiled and standardised with code written by Alban Sagouis available here: https://github.com/chase-lab/BioTIMEx 
+
+02_: scripts to fit models to the data. Some were written to run on a scientific computing cluster.
+
+03_: script to do posterior predictive checks.
+
+04_: scripts to wrangle posteriors for plotting results.
+
+05_: scripts to present results: figures and supplemental table.
+
+200_: script to generate data for conceptual figure.
+
+## Results
+Files in the results folder include:
+
+**bt_multi4_pois3_lnorm_results.Rdata**: output of 04_bt_multi4_posterior_wrangle.R
+
+**btx_multi4_global_results.Rdata**: output of 04_btx_global_multi4_posterior_wrangle.R
+
+**predicts_multi4_results.Rdata**: output of 04_PREDICTS_multi_coef_wrangle.R
+
+**spatial_multi4_results.Rdata**: output of 04_spat_natural_multi4_posterior_wrangle.R---
+
+---
 title: "BioTIMEx"
 author: "Alban Sagouis"
 date: "7/22/2020"
