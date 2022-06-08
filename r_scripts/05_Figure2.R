@@ -9,6 +9,11 @@ three_row_label = c('Component changes between the grey and colored',
                     'curves are represented by the respective shapes',
                     'on panels (g)-(i) below.')
 
+four_row_label = c('Component changes between',
+                   'grey and colored curves',
+                    'are represented by shapes',
+                    'on panels (g)-(i) below.')
+
 # positive panels
 top_positive <- plot_grid(NULL,
                           plot_grid(NULL,
@@ -16,23 +21,26 @@ top_positive <- plot_grid(NULL,
                                       labs(subtitle = '(a) More individuals only') +
                                       theme(axis.title.y = element_blank(),
                                             axis.text = element_blank(),
-                                            axis.ticks = element_blank()) +
-                                      draw_text(text = three_row_label, x = 7.5, y = c(3, 2.5, 2), hjust = 0, size = 9),
+                                            axis.ticks = element_blank(),
+                                            plot.subtitle = element_text(size = 7, face = 'bold')) +
+                                      draw_text(text = four_row_label, x = 8.5, y = c(3.5, 3, 2.5, 2), hjust = 0, size = 7),
                                     even_ibr +
                                       labs(subtitle = '(b) Altered SAD (e.g., increased evenness)') +
                                       theme(axis.title.y = element_blank(),
                                             axis.text = element_blank(),
-                                            axis.ticks = element_blank()),
+                                            axis.ticks = element_blank(),
+                                            plot.subtitle = element_text(size = 7, face = 'bold')),
                                     even2_ibr +
                                       labs(subtitle = '(c) More individuals, more even SAD') +
                                       theme(axis.title.y = element_blank(),
                                             axis.text = element_blank(),
-                                            axis.ticks = element_blank()),
+                                            axis.ticks = element_blank(),
+                                            plot.subtitle = element_text(size = 7, face = 'bold')),
                                     nrow = 1,
                                     rel_widths = c(0.1, 1,1,1)),
                           rel_heights = c(0.075, 1),
                           ncol = 1) +
-  draw_label('Species', x = 0.01, y = 0.5, angle = 90, size = 12) #+
+  draw_label('Species', x = 0.01, y = 0.5, angle = 90, size = 10) #+
   # draw_label('Individuals', x = 0.5, y = 0.01, size = 10) +
   # draw_label('Abundance and evenness change in same direction', x = 0.175, y = 0.97, size = 11, fontface = 'bold')
 
@@ -42,22 +50,25 @@ top_negative <- plot_grid(NULL,
                                       labs(subtitle = '(d) More individuals, less even, no change richness') +
                                       theme(axis.title.y = element_blank(),
                                             axis.text = element_blank(),
-                                            axis.ticks = element_blank()),
+                                            axis.ticks = element_blank(),
+                                            plot.subtitle = element_text(size = 7, face = 'bold')),
                                     dom2_ibr +
                                       labs(subtitle = '(e) More individuals, less even, fewer species') +
                                       theme(axis.title.y = element_blank(),
                                             axis.text = element_blank(),
-                                            axis.ticks = element_blank()),
+                                            axis.ticks = element_blank(),
+                                            plot.subtitle = element_text(size = 7, face = 'bold')),
                                     dom3_ibr +
                                       labs(subtitle = '(f) More individuals, less even SAD, more species') +
                                       theme(axis.title.y = element_blank(),
                                             axis.text = element_blank(),
-                                            axis.ticks = element_blank()),
+                                            axis.ticks = element_blank(),
+                                            plot.subtitle = element_text(size = 7, face = 'bold')),
                                     nrow = 1,
                                     rel_widths = c(0.1, 1,1,1)),
                           rel_heights = c(0.075, 1),
                           ncol = 1) +
-  draw_label('Species', x = 0.01, y = 0.5, angle = 90, size = 12) #+
+  draw_label('Species', x = 0.01, y = 0.5, angle = 90, size = 10) #+
   # draw_label('Individuals', x = 0.5, y = 0.01, size = 12) #+
   # draw_label('Opposing changes in abundance and evenness', x = 0.16, y = 0.975, size = 11, fontface = 'bold')
 
@@ -87,7 +98,7 @@ ggplot() +
   scale_y_continuous(name = '', breaks = c(0)) +
   coord_cartesian(clip = 'off') +
   theme_minimal() +
-  theme(axis.title = element_text(size = 10),
+  theme(axis.title = element_text(size = 8),
         plot.margin = margin(t = 8, r = 3, b = 3, l = 8, unit = 'mm'))
 
 dS_dSn <-
@@ -116,7 +127,7 @@ dS_dSn <-
   scale_y_continuous(name = '', breaks = c(0)) +
   coord_cartesian(clip = 'off') +
   theme_minimal() +
-  theme(axis.title = element_text(size = 10),
+  theme(axis.title = element_text(size = 8),
         plot.margin = margin(t = 8, r = 3, b = 3, l = 8, unit = 'mm'))
 
 dS_dS_PIE <-
@@ -145,7 +156,7 @@ dS_dS_PIE <-
   scale_y_continuous(name = '', breaks = c(0)) +
   coord_cartesian(clip = 'off') +
   theme_minimal() +
-  theme(axis.title = element_text(size = 10),
+  theme(axis.title = element_text(size = 8),
         plot.margin = margin(t = 8, r = 3, b = 3, l = 8, unit = 'mm')) 
 
 
@@ -164,15 +175,15 @@ cowplot::plot_grid(NULL, # white space for mansucript central header
                    plot_grid(dS_dN +
                                draw_label(label = label1, fontface = 'bold', 
                                           x = -Inf, y = Inf,
-                                          hjust = 0.2, vjust = -0.5, lineheight = 1, size = 12),
+                                          hjust = 0.2, vjust = -0.5, lineheight = 1, size = 8),
                              dS_dSn +
                                draw_label(label = label2, fontface = 'bold', 
                                           x = -Inf, y = Inf,
-                                          hjust = 0.2, vjust = -0.5, lineheight = 1, size = 12),
+                                          hjust = 0.2, vjust = -0.5, lineheight = 1, size = 8),
                              dS_dS_PIE +
                                draw_label(label = label3, 
                                           x = -Inf, y = Inf,
-                                          hjust = 0.3, vjust = -0.5, lineheight = 1, size = 12,
+                                          hjust = 0.3, vjust = -0.5, lineheight = 1, size = 8,
                                           fontface = 'bold' ),
                              nrow = 1),
                    nrow = 5,
@@ -180,4 +191,4 @@ cowplot::plot_grid(NULL, # white space for mansucript central header
 
 
 ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/revision/Fig2.pdf', 
-        width = 290, height = 200, units = 'mm')
+        width = 203.2, height = 152.4, units = 'mm')

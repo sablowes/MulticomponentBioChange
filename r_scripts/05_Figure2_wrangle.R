@@ -357,7 +357,8 @@ shape_legend <- ggplot() +
                                 'More individuals, less even, no change richness', 'More individuals, less even, fewer species',
                                 'More individuals, less even, more species')) +
   theme(legend.direction = 'horizontal',
-        legend.position = 'top') +
+        legend.position = 'top',
+        legend.text = element_text(size = 7)) +
   guides(shape = guide_legend(byrow = TRUE), color = guide_legend(byrow = TRUE))
 
 # function to extract legend from ggplot

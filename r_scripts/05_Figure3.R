@@ -61,7 +61,8 @@ S_N_2d_post_density_time1 <-
   theme_minimal() +
   theme(#legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold'))
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6))
 
 S_N_2d_post_density_time2 <-
   ggplot() +
@@ -102,7 +103,8 @@ S_N_2d_post_density_time2 <-
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold'))
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6))
 
 S_N_2d_post_density_space1 <-
   ggplot() +
@@ -150,7 +152,9 @@ S_N_2d_post_density_space1 <-
         legend.justification = c(1, 1),
         strip.text = element_blank(),
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold')) 
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6),
+        axis.title.x = element_text(size = 8)) 
 
 S_N_2d_post_density_space4 <- ggplot() +
   mapply(function(level) {
@@ -189,7 +193,8 @@ S_N_2d_post_density_space4 <- ggplot() +
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold'))
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6))
 
 #----S_Sn x2 ----
 S_Sn_2d_post_density_time1 <-
@@ -230,7 +235,8 @@ S_Sn_2d_post_density_time1 <-
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold'))
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6))
 
 S_Sn_2d_post_density_time2 <- ggplot() +
   mapply(function(level) {
@@ -270,7 +276,8 @@ S_Sn_2d_post_density_time2 <- ggplot() +
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold'))
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6))
 
 S_Sn_2d_post_density_space1 <- ggplot() +
   # posterior density
@@ -315,7 +322,9 @@ S_Sn_2d_post_density_space1 <- ggplot() +
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold')) +
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6),
+        axis.title.x = element_text(size = 8)) +
   guides(colour = guide_legend(override.aes = list(alpha = 1)))
 
 S_Sn_2d_post_density_space4 <- ggplot() +
@@ -355,7 +364,9 @@ S_Sn_2d_post_density_space4 <- ggplot() +
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold'))
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6))
+
 #----S_S_PIE x6 ----
 S_S_PIE_2d_post_density_time1 <-
   ggplot() +
@@ -396,7 +407,8 @@ S_S_PIE_2d_post_density_time1 <-
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold'))
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6))
 
 S_S_PIE_2d_post_density_time2 <- ggplot() +
   mapply(function(level) {
@@ -436,7 +448,8 @@ S_S_PIE_2d_post_density_time2 <- ggplot() +
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold'))
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6))
 
 S_S_PIE_2d_post_density_space1 <- ggplot() +
   # posterior density
@@ -479,7 +492,9 @@ S_S_PIE_2d_post_density_space1 <- ggplot() +
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold')) +
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6),
+        axis.title.x = element_text(size = 8)) +
   guides(colour = guide_legend(override.aes = list(alpha = 1)))
 
 S_S_PIE_2d_post_density_space4 <- ggplot() +
@@ -519,7 +534,8 @@ S_S_PIE_2d_post_density_space4 <- ggplot() +
   theme_minimal() +
   theme(legend.position = 'none',
         plot.tag.position = c(0.25,0.9),
-        plot.tag = element_text(size = 10, face = 'bold'))
+        plot.tag = element_text(size = 7, face = 'bold'),
+        axis.text = element_text(size = 6))
 
 # colour legend
 colour_legend <- ggplot() +
@@ -542,7 +558,7 @@ colour_legend <- ggplot() +
                                  'No change in any component')) +
   theme(legend.position = 'top',
         legend.direction = 'horizontal',
-        legend.text = element_text(size = 10, hjust = 0)) +
+        legend.text = element_text(size = 7, hjust = 0)) +
   guides(colour = guide_legend(nrow = 2))
 
 source('~/Dropbox/1current/R_random/functions/gg_legend.R')
@@ -551,23 +567,23 @@ leg <- gg_legend(colour_legend)
 # some titles for each row
 time_t1 <- ggdraw() +
   draw_label('Temporal changes: natural variation',
-             x = 0.05, y = 0.01, hjust = 0, size = 12) +
+             x = 0.05, y = 0.01, hjust = 0, size = 8) +
   theme(plot.margin = margin(0,0,0,5))
 
 time_t2 <- ggdraw() +
   draw_label('Temporal changes: perturbed environments',
-             x = 0.05, y = 0.01, hjust = 0, size = 12) +
+             x = 0.05, y = 0.01, hjust = 0, size = 8) +
   theme(plot.margin = margin(0,0,0,5))
 
 space_t1 <- ggdraw() +
   draw_label('Spatial comparisons: land use change',
-             x = 0.05, y = 0.01, hjust = 0, size = 12) +
+             x = 0.05, y = 0.01, hjust = 0, size = 8) +
   theme(plot.margin = margin(0,0,0,5))
 
 
 space_t4 <- ggdraw() +
   draw_label('Spatial comparisons: natural variation',
-             x = 0.05, y = 0.01, hjust = 0, size = 12) +
+             x = 0.05, y = 0.01, hjust = 0, size = 8) +
   theme(plot.margin = margin(0,0,0,5))
 
 
@@ -613,10 +629,10 @@ plot_grid(NULL,
           rel_heights = c(0.2, 0.2, 1,1,1,1)),
           NULL, nrow = 1, rel_widths = c(0.075, 1, 0.02)) +
   draw_label(x = 0.075, label = expression(paste('Change in species richness [log(S)]', sep = '')),
-             angle = 90)
+             angle = 90, size = 10)
 
 ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/revision/Fig3.pdf',
-       height = 300, width = 240, units = 'mm')
+       height = 203.2, width = 152.4, units = 'mm')
 
 # Sn ~ S_PIE
 Sn_S_PIE_2d_post_density_time1 <-

@@ -22,38 +22,38 @@ ggplot() +
                aes(x = corS_N, colour = 'S_N')) +
   geom_label(x = 0.58, y = 9,
              label = expression(paste('S & N')),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_N')) +
   geom_density(data = bt_cor_long,
                aes(x = corN_S_PIE, colour = 'N_S_PIE')) +
   geom_label(x = 0, y = 9,
              label = expression(paste('N & ', S[PIE])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'N_S_PIE')) +
   geom_density(data = bt_cor_long,
                aes(x = corSn_N, colour = 'Sn_N')) +
   geom_label(x = 0.375, y = 9,
              label = expression(paste('N & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'Sn_N')) +
   geom_density(data = bt_cor_long,
                aes(x = corS_S_PIE, colour = 'S_S_PIE')) +
   geom_label(x = 0.75, y = 18,
              label = expression(paste('S & ', S[PIE])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_S_PIE')) +
   geom_density(data = bt_cor_long,
                aes(x = corS_Sn, colour = 'S_Sn')) +
   geom_label(x = 0.9, y = 41,
              label = expression(paste('S & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_Sn'),
              colour = 'white') +
   geom_density(data = bt_cor_long,
                aes(x = corS_PIE_Sn, colour = 'S_PIE_Sn')) +
-  geom_label(x = 0.85, y = 24,
+  geom_label(x = 0.85, y = 28,
              label = expression(paste(S[PIE], ' & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_PIE_Sn')) +
   scale_colour_manual(guide = FALSE,
                     name = 'Components',
@@ -79,9 +79,9 @@ ggplot() +
   theme(legend.position = 'none',
         legend.justification = c(1,1),
         legend.background = element_blank(),
-        plot.tag.position = c(0.15,0.85),
-        plot.tag = element_text(size = 10, face = 'bold'),
-        plot.title = element_text(size = 12, hjust = 0)) 
+        plot.tag.position = c(0.2,0.85),
+        plot.tag = element_text(size = 7, face = 'bold'),
+        plot.title = element_text(size = 9, hjust = 0)) 
 
 btx_cor_plot <-
   ggplot() +
@@ -98,30 +98,30 @@ btx_cor_plot <-
                aes(x = corS_Sn, colour = 'S_Sn')) +
   geom_density(data = btx_cor_long,
                aes(x = corS_PIE_Sn, colour = 'S_PIE_Sn')) +
-  geom_label(x = 0.75, y = 4.5,
+  geom_label(x = 0.75, y = 4.55,
              label = expression(paste(S[PIE], ' & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_PIE_Sn')) +
   geom_label(x = 0.8, y = 6,
              label = expression(paste('S & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_Sn'),
              colour = 'white') +
   geom_label(x = -0.4, y = 3,
              label = expression(paste('N & ', S[PIE])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'N_S_PIE')) +
-  geom_label(x = 0.5, y = 4,
+  geom_label(x = 0.45, y = 4.5,
              label = expression(paste('S & N')),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_N')) +
-  geom_label(x = 0.4, y = 3.4,
+  geom_label(x = 0.4, y = 3.6,
              label = expression(paste('S & ', S[PIE])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_S_PIE')) +
   geom_label(x = 0.1, y = 3,
              label = expression(paste('N & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'Sn_N')) +
   scale_colour_manual(guide = FALSE,
                     name = 'Components',
@@ -145,9 +145,9 @@ btx_cor_plot <-
        tag = 'b') +
   theme_minimal() +
   theme(legend.position = 'none',
-        plot.tag.position = c(0.15,0.85),
-        plot.tag = element_text(size = 10, face = 'bold'),
-        plot.title = element_text(size = 12, hjust = 0)) +
+        plot.tag.position = c(0.2,0.85),
+        plot.tag = element_text(size = 7, face = 'bold'),
+        plot.title = element_text(size = 8, hjust = 0)) +
   guides(fill = guide_legend(ncol = 3, label.hjust = 0))
 
 predicts_cor_plot_simple <-
@@ -156,45 +156,45 @@ ggplot() +
   geom_density(data = predicts_cor_long %>%
                  filter(LU!='Primary vegetation'),
                aes(x = corS_N, colour = 'S_N')) +
-  geom_label(x = 0.65, y = 2.25,
+  geom_label(x = 0.5, y = 2.5,
              label = expression(paste('S & N')),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_N')) +
   geom_density(data = predicts_cor_long %>%
                  filter(LU!='Primary vegetation'),
                aes(x = corS_S_PIE, colour = 'S_S_PIE')) +
-  geom_label(x = 0.25, y = 2.25,
+  geom_label(x = 0.25, y = 2.5,
              label = expression(paste('S & ', S[PIE])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_S_PIE')) +
   geom_density(data = predicts_cor_long %>%
                  filter(LU!='Primary vegetation'),
                aes(x = corS_Sn, colour = 'S_Sn')) +
   geom_label(x = 0.4, y = 1.2,
              label = expression(paste('S & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_Sn'),
              colour = 'white') +
   geom_density(data = predicts_cor_long %>%
                  filter(LU!='Primary vegetation'),
                aes(x = corSn_N, colour = 'Sn_N')) +
-  geom_label(x = -0.05, y = 2.5,
+  geom_label(x = -0.15, y = 2.5,
              label = expression(paste('N & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'Sn_N')) +
   geom_density(data = predicts_cor_long %>%
                  filter(LU!='Primary vegetation'),
                aes(x = corS_PIE_Sn, colour = 'S_PIE_Sn')) +
-  geom_label(x = 0.7, y = 2,
+  geom_label(x = 0.75, y = 2,
              label = expression(paste(S[PIE], ' & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_PIE_Sn')) +
   geom_density(data = predicts_cor_long %>%
                  filter(LU!='Primary vegetation'),
                aes(x = corN_S_PIE, colour = 'N_S_PIE')) +
-  geom_label(x = 0, y = 1.9,
+  geom_label(x = -0.2, y = 1.9,
              label = expression(paste('N & ', S[PIE])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'N_S_PIE')) +
   scale_colour_manual(guide = FALSE,
                     values = c('S_N' = '#f0027f',
@@ -216,9 +216,9 @@ ggplot() +
   theme_minimal() +
   theme(legend.position = 'none',
         strip.text = element_text(hjust = 0),
-        plot.tag.position = c(0.15,0.85),
-        plot.tag = element_text(size = 10, face = 'bold'),
-        plot.title = element_text(size = 12, hjust = 0))
+        plot.tag.position = c(0.2,0.85),
+        plot.tag = element_text(size = 7, face = 'bold'),
+        plot.title = element_text(size = 8, hjust = 0))
 
 spatial_gradient_cor <-
   ggplot() +
@@ -241,30 +241,30 @@ spatial_gradient_cor <-
                aes(x = corN_S_PIE, colour = 'N_S_PIE'),
                geom='line', position='identity') +
     geom_vline(xintercept = 0, lty = 2, colour = '#bdbdbd') +
-  geom_label(x = 0.15, y = 2.5,
+  geom_label(x = 0.1, y = 2.5,
              label = expression(paste('S & N')),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_N')) +
-  geom_label(x = 0.18, y = 2.1,
+  geom_label(x = 0.15, y = 1.7,
              label = expression(paste('S & ', S[PIE])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_S_PIE')) +
-  geom_label(x = 0.3, y = 2.3,
+  geom_label(x = 0.4, y = 2.3,
              label = expression(paste('S & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_Sn'),
              colour = 'white') +
-  geom_label(x = 0, y = 2,
+  geom_label(x = -0.2, y = 2,
              label = expression(paste('N & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'Sn_N')) +
   geom_label(x = 0.4, y = 2,
              label = expression(paste(S[PIE], ' & ', S[n])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'S_PIE_Sn')) +
-  geom_label(x = 0.0, y = 2.3,
+  geom_label(x = -0.2, y = 2.32,
              label = expression(paste('N & ', S[PIE])),
-             size = 2,
+             size = 1.4,
              aes(fill = 'N_S_PIE')) +
   scale_linetype_manual(name = '',
                         values = c('CESTES' = 1,
@@ -289,9 +289,9 @@ spatial_gradient_cor <-
   theme_minimal() +
   theme(legend.position = c(0,0.6),
         legend.justification = c(0,1),
-        plot.tag.position = c(0.15,0.85),
-        plot.tag = element_text(size = 10, face = 'bold'),
-        plot.title = element_text(size = 12, hjust = 0)) 
+        plot.tag.position = c(0.2,0.85),
+        plot.tag = element_text(size = 7, face = 'bold'),
+        plot.title = element_text(size = 8, hjust = 0)) 
 
 
 
@@ -305,4 +305,4 @@ plot_grid(NULL,
   draw_label(y = 0.05, label = 'Correlation')
 
 ggsave('~/Dropbox/1current/multidimensionalChangeMS/Figs/revision/Fig4.pdf',
-       width = 220, height = 200, units = 'mm')
+       width = 152.4, height = 120, units = 'mm')
