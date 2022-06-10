@@ -1,5 +1,6 @@
-# wrangle data from Chase et al (2018) Ecol Lett for reuse in multicomponent change paper
 # Brian McGill compiled these data for a book chapter in Biological Diversity: Frontiers in Measurement and Assessment, Magurran & McGill (Eds)
+# these data were also used in Chase et al. 2018 Ecol Lett, and archived at https://doi.org/10.6084/m9.figshare.6945704
+
 source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/00_init_dirs_load_packages.R')
 
 ## NB: some of these are not 'natural' gradients:

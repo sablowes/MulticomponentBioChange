@@ -8,6 +8,7 @@ meta <- read_csv('~/Dropbox/1current/PREDICTS/data/resource.csv')
 # the data (downloaded Fri 15 May 2020)
 predicts <- readRDS('~/Dropbox/1current/PREDICTS/data/database.rds')
 
+# identify data that document the abundance of individuals for each species (or higher)
 maybes <- predicts %>%
   filter(Diversity_metric_type=='Abundance' & Diversity_metric_unit=='individuals') %>%
   group_by(Source_ID, Realm, Biome, Higher_taxon, Sampling_method, Sampling_effort_unit) %>%
@@ -30,9 +31,9 @@ multi_LU <- multi_LU %>%
   mutate(LU = Predominant_land_use)
 
 
-#- want to calculate MoB metrics for each LU category
+#- want to calculate biodiversity metrics for each LU category
 alpha <- multi_LU %>% 
-  # following the model in Newbold et al 2015 Nature (see supplementary material)
+  # following the data structure and model in Newbold et al 2015 Nature (see their supplementary material)
   group_by(SS, SSB,  SSBS, LU) %>% 
   summarise(S = n_distinct(Taxon_name_entered), 
             N_raw = sum(Measurement),
