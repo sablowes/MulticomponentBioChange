@@ -18,7 +18,7 @@ Files in the data folder include:
 
 **conceptual\_figure\_dat.Rdata**: simulated data to reproduce Figure 2.
 
-**long\_table.csv**: data for *Temporal comparisons: experimental or natural perturbations*. This data is was prepared for analysis by Alban Sagouis, using code available here: <https://github.com/chase-lab/BioTIMEx>
+**long\_table.csv**: data for *Temporal comparisons: experimental or natural perturbations*. This data is was prepared for analysis by Alban Sagouis, using code available in subdirecotry temporal_comparison_data_preparation: <https://github.com/sablowes/MulticomponentBioChange/temporal_comparison_data_preparation>
 
 **PREDICTS\_alpha.Rdata**: data for *Spatial comparison: anthropogenic perturbations*; this is the output of 01\_PREDICTS\_data\_wrangle.R
 
