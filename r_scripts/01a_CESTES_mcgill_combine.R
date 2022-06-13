@@ -5,7 +5,7 @@ load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/data/cest
 load('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/data/mcgill_data_for_analysis.Rdata')
 
 mcgill_sad <- mcgill_sad %>% 
-  # remove one data set with eutrophication gradient
+  # remove one data set with eutrophication gradient that slipped through initial screening
   filter(dataset_id!='m27')
 
 # combine cestes and mcgill
