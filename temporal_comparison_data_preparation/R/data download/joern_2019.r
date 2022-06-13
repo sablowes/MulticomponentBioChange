@@ -8,9 +8,9 @@
 # Stylesheet v2.10 for metadata conversion into program: John H. Porter, Univ. Virginia, jporter@virginia.edu
 
 dataset_id <- 'joern_2019'
-infile1 <- 'data/raw data/joern_2019/CGR021.csv'
-if(!dir.exists('data/raw data/joern_2019/') || !file.exists(infile1))   {
-   dir.create('data/raw data/joern_2019/',  showWarnings = FALSE)
+infile1 <- 'temporal_comparison_data_preparation/data/raw data/joern_2019/CGR021.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/joern_2019/') || !file.exists(infile1))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/joern_2019/',  showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-knz/29/14/aaa7b3b477019f6bb96f47a9a6ae8943"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -67,9 +67,9 @@ dt1$Cloudcov <- ifelse((trimws(as.character(dt1$Cloudcov))==trimws("Blank")),NA,
 
 # Biological data
 
-infile2 <- 'data/raw data/joern_2019/CGR022.csv'
-if(!dir.exists('data/raw data/joern_2019/') || !file.exists(infile2))   {
-   dir.create('data/raw data/joern_2019/',  showWarnings = FALSE)
+infile2 <- 'temporal_comparison_data_preparation/data/raw data/joern_2019/CGR022.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/joern_2019/') || !file.exists(infile2))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/joern_2019/',  showWarnings = FALSE)
 inUrl2  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-knz/29/14/3fb352e2478f776517f7e880fe31b808"
    download.file(inUrl2, infile2, method="curl")
 }
@@ -158,7 +158,7 @@ dt2[dt2$DataCode == 'cgr02', 'DataCode'] <- 'CGR02'
 dt2 <- dt2[dt2$DataCode == 'CGR02',]
 
 ddata <- dt2
-save(ddata, file='data/raw data/joern_2019/ddata')
+save(ddata, file='temporal_comparison_data_preparation/data/raw data/joern_2019/ddata')
 
 
 
@@ -302,9 +302,9 @@ if(FALSE) { # instars are not of interest here
 # Stylesheet v2.10 for metadata conversion into program: John H. Porter, Univ. Virginia, jporter@virginia.edu
 
 
-infile4 <- 'data/raw data/joern_2019/kfh011.csv'
-if(!dir.exists('data/raw data/joern_2019/') || !file.exists(infile4))   {
-   dir.create('data/raw data/joern_2019/',  showWarnings = FALSE)
+infile4 <- 'temporal_comparison_data_preparation/data/raw data/joern_2019/kfh011.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/joern_2019/') || !file.exists(infile4))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/joern_2019/',  showWarnings = FALSE)
    inUrl4  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-knz/42/9/3565885edc7640f2276174ca1f00240b"
    download.file(inUrl4, infile4, method="curl")
 }
@@ -352,7 +352,7 @@ if (class(dt4$Comments)!="factor") dt4$Comments<- as.factor(dt4$Comments)
 dt4$Watershed <- ifelse((trimws(as.character(dt4$Watershed))==trimws(".")),NA,as.character(dt4$Watershed))
 
 fd <- dt4
-save(fd, file='data/raw data/joern_2019/ddata_env')
+save(fd, file='temporal_comparison_data_preparation/data/raw data/joern_2019/ddata_env')
 
 if(FALSE) {
    # Here is the structure of the input data frame:

@@ -2,7 +2,7 @@
 library(data.table)
 
 dataset_id <- 'carpenter_2017'
-load(file='data/raw data/carpenter_2017/ddata')
+load(file='temporal_comparison_data_preparation/data/raw data/carpenter_2017/ddata')
 setDT(ddata)
 
 setnames(ddata, old = c( 'lakename','year4','sampledate', 'concentration'),
@@ -90,6 +90,6 @@ ddata[, ':='(
                                              year - 1985, NA_integer_)
    )]
 
-dir.create(paste0('data/wrangled data/', dataset_id), showWarnings = FALSE)
-fwrite(ddata, paste0('data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
+dir.create(paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
+fwrite(ddata, paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
        row.names = FALSE)

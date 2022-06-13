@@ -7,9 +7,9 @@
 # Contact:  Aaron Ellison -  Harvard Forest  - aellison@fas.harvard.edu
 # Stylesheet v2.10 for metadata conversion into program: John H. Porter, Univ. Virginia, jporter@virginia.edu
 
-infile1 <- 'data/raw data/ellison_2018/hf160-01-ibuttons.csv'
-if(!dir.exists('data/raw data/ellison_2018/') || !file.exists(infile1))   {
-   dir.create('data/raw data/ellison_2018/',  showWarnings = FALSE)
+infile1 <- 'temporal_comparison_data_preparation/data/raw data/ellison_2018/hf160-01-ibuttons.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/ellison_2018/') || !file.exists(infile1))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/ellison_2018/',  showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/160/20/b1610a7d2f2a95a509af82a7bd01a108"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -57,9 +57,9 @@ if (class(dt1$subplot.t)!="factor") dt1$subplot.t<- as.factor(dt1$subplot.t)
 dt1$soilt <- ifelse((trimws(as.character(dt1$soilt))==trimws("NA")),NA,dt1$soilt)
 
 
-infile2 <- 'data/raw data/ellison_2018/hf160-02-subplots.csv'
-if(!dir.exists('data/raw data/ellison_2018/') || !file.exists(infile2))   {
-   dir.create('data/raw data/ellison_2018/',  showWarnings = FALSE)
+infile2 <- 'temporal_comparison_data_preparation/data/raw data/ellison_2018/hf160-02-subplots.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/ellison_2018/') || !file.exists(infile2))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/ellison_2018/',  showWarnings = FALSE)
    inUrl2  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/160/20/4b3cebe94958392ef8cff25409565fa1"
    download.file(inUrl2, infile2, method="curl")
 }
@@ -103,9 +103,9 @@ dt2$elevation <- ifelse((trimws(as.character(dt2$elevation))==trimws("NA")),NA,d
 
 
 
-infile3 <- 'data/raw data/ellison_2018/hf160-03-ants.csv'
-if(!dir.exists('data/raw data/ellison_2018/') || !file.exists(infile3))   {
-   dir.create('data/raw data/ellison_2018/',  showWarnings = FALSE)
+infile3 <- 'temporal_comparison_data_preparation/data/raw data/ellison_2018/hf160-03-ants.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/ellison_2018/') || !file.exists(infile3))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/ellison_2018/',  showWarnings = FALSE)
    inUrl3  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/160/20/8821e0b89318cfb2204f9acc17287e0f"
    download.file(inUrl3, infile3, method="curl")
 }
@@ -153,16 +153,16 @@ if (class(dt3$count)=="character") dt3$count <-as.numeric(dt3$count)
 dt3$count <- ifelse((trimws(as.character(dt3$count))==trimws("NA")),NA,dt3$count)
 
 ddata <- dt3
-save(ddata, file='data/raw data/ellison_2018/ddata')
+save(ddata, file='temporal_comparison_data_preparation/data/raw data/ellison_2018/ddata')
 
 
 
 if(FALSE) {
    # Nitrogen data
 
-   infile4 <- 'data/raw data/ellison_2018/hf160-04-nitrogen.csv'
-   if(!dir.exists('data/raw data/ellison_2018/') || !file.exists(infile4))   {
-      dir.create('data/raw data/ellison_2018/',  showWarnings = FALSE)
+   infile4 <- 'temporal_comparison_data_preparation/data/raw data/ellison_2018/hf160-04-nitrogen.csv'
+   if(!dir.exists('temporal_comparison_data_preparation/data/raw data/ellison_2018/') || !file.exists(infile4))   {
+      dir.create('temporal_comparison_data_preparation/data/raw data/ellison_2018/',  showWarnings = FALSE)
       inUrl4  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/160/20/ae3924330258eef88d26f8abe7cdf4d1"
       download.file(inUrl4, infile4, method="curl")
    }

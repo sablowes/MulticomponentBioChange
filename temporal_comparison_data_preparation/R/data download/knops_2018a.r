@@ -11,9 +11,9 @@
 
 
 
-infile1 <- 'data/raw data/knops_2018a/e153_Arthropod sweepnet sampling.txt'
-if(!dir.exists('data/raw data/knops_2018a/') || !file.exists(infile1))   {
-   dir.create('data/raw data/knops_2018a/', showWarnings = FALSE)
+infile1 <- 'temporal_comparison_data_preparation/data/raw data/knops_2018a/e153_Arthropod sweepnet sampling.txt'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/knops_2018a/') || !file.exists(infile1))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/knops_2018a/', showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-cdr/310/8/03cac5186165dec2523a1b3bbe3b432a"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -65,7 +65,7 @@ if (class(dt1$nSpecimens)=="character") dt1$nSpecimens <-as.numeric(dt1$nSpecime
                     # Convert Missing Values to NA for non-dates
 
 ddata <- dt1
-save(ddata, file = 'data/raw data/knops_2018a/ddata')
+save(ddata, file = 'temporal_comparison_data_preparation/data/raw data/knops_2018a/ddata')
 
 
 

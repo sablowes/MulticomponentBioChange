@@ -2,7 +2,7 @@
 # correct typos in subs, method
 if (FALSE) {
    dataset_id <- 'ellison_2017b'
-   load(file='data/raw data/ellison_2017b/ddata')
+   load(file='temporal_comparison_data_preparation/data/raw data/ellison_2017b/ddata')
    setDT(ddata)
 
    setnames(ddata, old = c('cham', 'subs', 'n'),
@@ -58,8 +58,8 @@ if (FALSE) {
    ]
 
 
-   dir.create(paste0('data/wrangled data/', dataset_id), showWarnings = FALSE)
-   fwrite(ddata, paste0('data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
+   dir.create(paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
+   fwrite(ddata, paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
           row.names=FALSE)
 
 }

@@ -13,9 +13,9 @@
 
 
 
-infile1 <- 'data/raw data/reed_2020a/LTE_All_Fish_All_Years_20200224.csv'
-if(!dir.exists('data/raw data/reed_2020a/') || !file.exists(infile1))   {
-   dir.create('data/raw data/reed_2020a/', showWarnings = FALSE)
+infile1 <- 'temporal_comparison_data_preparation/data/raw data/reed_2020a/LTE_All_Fish_All_Years_20200224.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/reed_2020a/') || !file.exists(infile1))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/reed_2020a/', showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/30/18/4587fe81c6d2eabf530c70e53b302132"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -101,7 +101,7 @@ dt1$AREA <- ifelse((trimws(as.character(dt1$AREA))==trimws("-99999")),NA,dt1$ARE
 dt1$SCIENTIFIC_NAME <- as.factor(ifelse((trimws(as.character(dt1$SCIENTIFIC_NAME))==trimws("-99999")),NA,as.character(dt1$SCIENTIFIC_NAME)))
 
 ddata <- dt1
-save(ddata, file = 'data/raw data/reed_2020a/ddata')
+save(ddata, file = 'temporal_comparison_data_preparation/data/raw data/reed_2020a/ddata')
 
 
 

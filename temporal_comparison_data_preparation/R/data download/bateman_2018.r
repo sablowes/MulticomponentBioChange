@@ -12,9 +12,9 @@
 
 
 
-infile1 <- 'data/raw data/bateman_2018/641_srbp_birds_7ffe7d716e64a4def128217851d6f2d0.csv'
-if(!dir.exists('data/raw data/bateman_2018/') || !file.exists(infile1))   {
-   dir.create('data/raw data/bateman_2018/', showWarnings = FALSE)
+infile1 <- 'temporal_comparison_data_preparation/data/raw data/bateman_2018/641_srbp_birds_7ffe7d716e64a4def128217851d6f2d0.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/bateman_2018/') || !file.exists(infile1))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/bateman_2018/', showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-cap/641/3/a631fee154d9e4caaabb5a423b69c323"
    download.file(inUrl1,infile1,method="curl")
 }
@@ -87,7 +87,7 @@ if (class(dt1$QCcomment)!="factor") dt1$QCcomment<- as.factor(dt1$QCcomment)
 # Convert Missing Values to NA for non-dates
 
 ddata <- dt1
-save(ddata, file = 'data/raw data/bateman_2018/ddata')
+save(ddata, file = 'temporal_comparison_data_preparation/data/raw data/bateman_2018/ddata')
 
 
 if(FALSE) {

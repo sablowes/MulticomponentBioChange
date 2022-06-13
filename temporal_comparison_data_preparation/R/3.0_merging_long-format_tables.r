@@ -2,10 +2,10 @@
 library(data.table)
 
 # Merging
-listfiles <- list.files('data/wrangled data', pattern = '.csv',
+listfiles <- list.files('temporal_comparison_data_preparation/data/wrangled data', pattern = '.csv',
                         full.names = TRUE, recursive = T)
 
-template <- read.csv('data/template long format.txt', h = TRUE, sep = '\t')
+template <- read.csv('temporal_comparison_data_preparation/data/template long format.txt', h = TRUE, sep = '\t')
 column_names_template <- template[,1]
 
 lst <- lapply(listfiles, data.table::fread)

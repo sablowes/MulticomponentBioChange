@@ -2,7 +2,7 @@
 library(data.table)
 
 dataset_id <- 'fridley_2009'
-load(file = 'data/raw data/fridley_2009/ddata')
+load(file = 'temporal_comparison_data_preparation/data/raw data/fridley_2009/ddata')
 setDT(ddata)
 
 setnames(ddata, c('block', 'plot', 'contacts'),
@@ -55,6 +55,6 @@ ddata[, ':='(
 
 ddata <- unique(ddata)
 
-dir.create(paste0('data/wrangled data/', dataset_id), showWarnings = FALSE)
-fwrite(ddata, paste0('data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
+dir.create(paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
+fwrite(ddata, paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
 

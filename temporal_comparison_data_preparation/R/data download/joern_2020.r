@@ -10,9 +10,9 @@
 
 
 
-infile2 <- 'data/raw data/joern_2020/PBG072.csv'
-if(!dir.exists('data/raw data/joern_2020/') || !file.exists(infile2))   {
-   dir.create('data/raw data/joern_2020/', showWarnings = FALSE)
+infile2 <- 'temporal_comparison_data_preparation/data/raw data/joern_2020/PBG072.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/joern_2020/') || !file.exists(infile2))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/joern_2020/', showWarnings = FALSE)
    inUrl2  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-knz/121/5/67a04b9c87218fd3c377d99f4e6b834e"
    download.file(inUrl2,infile2,method="curl")
 }
@@ -141,7 +141,7 @@ dt2$Total <- ifelse((trimws(as.character(dt2$Total))==trimws(".")),NA,dt2$Total)
 suppressWarnings(dt2$Total <- ifelse(!is.na(as.numeric(".")) & (trimws(as.character(dt2$Total))==as.character(as.numeric("."))),NA,dt2$Total))
 
 ddata <- dt2
-save(ddata, file = 'data/raw data/joern_2020/ddata')
+save(ddata, file = 'temporal_comparison_data_preparation/data/raw data/joern_2020/ddata')
 
 
 

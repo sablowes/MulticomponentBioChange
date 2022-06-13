@@ -11,9 +11,9 @@
 # Stylesheet v2.10 for metadata conversion into program: John H. Porter, Univ. Virginia, jporter@virginia.edu
 
 dataset_id <- 'hershey_2016'
-infile1 <- 'data/raw data/hershey_2016/84-98hektot.csv'
-if(!dir.exists('data/raw data/hershey_2016/') || !file.exists(infile1))   {
-   dir.create('data/raw data/hershey_2016/',  showWarnings = FALSE)
+infile1 <- 'temporal_comparison_data_preparation/data/raw data/hershey_2016/84-98hektot.csv'
+if(!dir.exists('temporal_comparison_data_preparation/data/raw data/hershey_2016/') || !file.exists(infile1))   {
+   dir.create('temporal_comparison_data_preparation/data/raw data/hershey_2016/',  showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-arc/1125/3/9e3ce25f9861c0dccc40f2258a7babef"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -89,7 +89,7 @@ if (class(dt1$SNAILS)=="character") dt1$SNAILS <-as.numeric(dt1$SNAILS)
 
 
 ddata <- dt1
-save(ddata, file=paste0('data/raw data/', dataset_id,'/ddata'))
+save(ddata, file=paste0('temporal_comparison_data_preparation/data/raw data/', dataset_id,'/ddata'))
 
 
 

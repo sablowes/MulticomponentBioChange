@@ -3,7 +3,7 @@ library(data.table)
 
 
 dataset_id <- 'joern_2020'
-load(file = 'data/raw data/joern_2020/ddata')
+load(file = 'temporal_comparison_data_preparation/data/raw data/joern_2020/ddata')
 setDT(ddata)
 
 setnames(ddata, old = c('Recyear','Watershed','Repsite'),
@@ -96,7 +96,7 @@ ddata[, ':='(
 )]
 
 # Disturbance calendar
-load('data/raw data/joern_2019/ddata_env')
+load('temporal_comparison_data_preparation/data/raw data/joern_2019/ddata_env')
 fd <- fd[nchar(fd$Watershed) <= 4,]
 
 # N4D -> N04D
@@ -135,6 +135,6 @@ ddata[, ':='(
 # Total abundance is different from the sum of the abundances in S1:S10 columns in a significant number of cases
 
 
-dir.create(paste0('data/wrangled data/', dataset_id), showWarnings = FALSE)
-fwrite(ddata, paste0('data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
+dir.create(paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
+fwrite(ddata, paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
 
