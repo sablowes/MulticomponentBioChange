@@ -2,7 +2,7 @@
 source('~/Dropbox/1current/multidimensionalChangeMS/multiComponentChange/r_scripts/00_init_dirs_load_packages.R')
 
 # these data were compiled and wrangled by Dr Alban Sagious
-# code to download and wrangle data available at: https://github.com/MulticomponentBioChange/temporal_comparison_data_preparation
+# code to download and wrangle data available at: https://github.com/sablowes/MulticomponentBioChange/temporal_change_data_preparation
 dat <- read_csv(paste0(path2wd, 'multiComponentChange/data/long_table.csv'))
 
 good_dat <- dat %>% 
