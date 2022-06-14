@@ -66,14 +66,3 @@ Files in the results folder include:
 **predicts_multi4_results.Rdata**: output of 04_PREDICTS_multi_coef_wrangle.R
 
 **spatial_multi4_results.Rdata**: output of 04_spat_natural_multi4_posterior_wrangle.R
-
----
-title: "BioTIMEx"
-author: "Alban Sagouis"
-date: "7/22/2020"
-output: md_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
