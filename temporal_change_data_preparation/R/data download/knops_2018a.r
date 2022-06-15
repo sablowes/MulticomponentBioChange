@@ -11,9 +11,9 @@
 
 
 
-infile1 <- 'temporal_change_data_preparation/data/raw data/knops_2018a/e153_Arthropod sweepnet sampling.txt'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/knops_2018a/') || !file.exists(infile1))   {
-   dir.create('temporal_change_data_preparation/data/raw data/knops_2018a/', showWarnings = FALSE)
+infile1 <- paste0(getwd(),'/data/raw data/knops_2018a/e153_Arthropod sweepnet sampling.txt')
+if(!dir.exists(paste0(getwd(),'/data/raw data/knops_2018a/')) || !file.exists(infile1))   {
+   dir.create(paste0(getwd(),'/data/raw data/knops_2018a/'), showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-cdr/310/8/03cac5186165dec2523a1b3bbe3b432a"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -65,34 +65,5 @@ if (class(dt1$nSpecimens)=="character") dt1$nSpecimens <-as.numeric(dt1$nSpecime
                     # Convert Missing Values to NA for non-dates
 
 ddata <- dt1
-save(ddata, file = 'temporal_change_data_preparation/data/raw data/knops_2018a/ddata')
-
-
-
-
-if(FALSE) {
-                    # Here is the structure of the input data frame:
-                    str(dt1)
-                    attach(dt1)
-                    # The analyses below are basic descriptions of the variables. After testing, they should be replaced.
-
-                    summary(Exp)
-                    summary(Location)
-                    summary(Plot)
-                    summary(Exclosure)
-                    summary(Fertilized)
-                    summary(Burned)
-                    summary(Date)
-                    summary(Order)
-                    summary(Family.paren.Subfamily.paren.)
-                    summary(Genus)
-                    summary(Specific.epithet)
-                    summary(Further.ID)
-                    summary(Life.stage)
-                    summary(nSpecimens)
-                       detach(dt1)
-}
-
-
-
+save(ddata, file = paste0(getwd(),'/data/raw data/knops_2018a/ddata'))
 

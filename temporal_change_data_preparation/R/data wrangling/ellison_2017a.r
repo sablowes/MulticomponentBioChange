@@ -2,7 +2,7 @@
 library(data.table)
 
 dataset_id <- 'ellison_2017a'
-load(file = 'temporal_change_data_preparation/data/raw data/ellison_2017a/ddata')
+load(file = paste0(getwd(), '/data/raw data/ellison_2017a/ddata'))
 setDT(ddata)
 
 setnames(ddata, old = c('cham', 'subs', 'n'),
@@ -88,6 +88,6 @@ ddata[, ':='(dataset_id = dataset_id,
 )]
 
 
-dir.create(paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
-fwrite(ddata, paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
+dir.create(paste0(getwd(), '/data/wrangled data/', dataset_id), showWarnings = FALSE)
+fwrite(ddata, paste0(getwd(), '/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
        row.names = FALSE)

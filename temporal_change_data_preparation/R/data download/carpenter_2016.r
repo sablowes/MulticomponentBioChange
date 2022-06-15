@@ -13,9 +13,9 @@
 
 
 
-infile1 <- 'temporal_change_data_preparation/data/raw data/carpenter_2016/cascade_zooplankton_v0.5_upload.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/carpenter_2016/') || !file.exists(infile1))   {
-   dir.create('temporal_change_data_preparation/data/raw data/carpenter_2016/', showWarnings = FALSE)
+infile1 <- paste0(getwd(),"/data/raw data/carpenter_2016/cascade_zooplankton_v0.5_upload.csv")
+if(!dir.exists(paste0(getwd(),"/data/raw data/carpenter_2016/")) || !file.exists(infile1))   {
+   dir.create(paste0(getwd(),"/data/raw data/carpenter_2016/"), showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-ntl/355/4/8084d8a30424cbf3feb4f69621e6c0a1"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -91,7 +91,7 @@ dt1$biomass <- ifelse((trimws(as.character(dt1$biomass))==trimws("NA")),NA,dt1$b
 
 
 ddata <- dt1
-save(ddata, file = 'temporal_change_data_preparation/data/raw data/carpenter_2016/ddata')
+save(ddata, file = paste0(getwd(),"/data/raw data/carpenter_2016/ddata"))
 
 
 

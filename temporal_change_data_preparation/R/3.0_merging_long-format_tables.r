@@ -2,10 +2,10 @@
 library(data.table)
 
 # Merging
-listfiles <- list.files('temporal_change_data_preparation/data/wrangled data', pattern = '.csv',
+listfiles <- list.files(paste0(getwd(), '/data/wrangled data'), pattern = '.csv',
                         full.names = TRUE, recursive = T)
 
-template <- read.csv('temporal_change_data_preparation/data/template long format.txt', h = TRUE, sep = '\t')
+template <- read.csv(paste0(getwd(), '/data/template long format.txt'), h = TRUE, sep = '\t')
 column_names_template <- template[,1]
 
 lst <- lapply(listfiles, data.table::fread)
@@ -53,5 +53,5 @@ sort(table(study_cases$dataset_id), decreasing = T)
 
 # Saving
 
-data.table::fwrite(dt, 'data/long_table.csv', row.names = F, quote = TRUE)
+data.table::fwrite(dt, paste0(getwd(),'/data/long_table.csv'), row.names = F, quote = TRUE)
 

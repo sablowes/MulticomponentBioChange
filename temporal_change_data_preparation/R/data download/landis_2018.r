@@ -8,9 +8,9 @@
 
 
 
-infile1 <- 'temporal_change_data_preparation/data/raw data/landis_2018/Insect+Populations+via+Sticky+Traps'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/landis_2018/') || !file.exists(infile1))   {
-   dir.create('temporal_change_data_preparation/data/raw data/landis_2018/', showWarnings = FALSE)
+infile1 <- paste0(getwd(),'/data/raw data/landis_2018/Insect+Populations+via+Sticky+Traps')
+if(!dir.exists(paste0(getwd(),'/data/raw data/landis_2018/')) || !file.exists(infile1))   {
+   dir.create(paste0(getwd(),'/data/raw data/landis_2018/'), showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-kbs/23/26/8d33fa9169147f266d20bdcd09a07820"
    download.file(inUrl1,infile1,method="curl")
 }
@@ -60,36 +60,5 @@ if (class(dt1$utm_northing)=="character") dt1$utm_northing <-as.numeric(dt1$utm_
 # Convert Missing Values to NA for non-dates
 
 ddata <- dt1
-save(ddata, file = 'temporal_change_data_preparation/data/raw data/landis_2018/ddata')
-
-
-
-if(FALSE) {
-   # Here is the structure of the input data frame:
-   str(dt1)
-   attach(dt1)
-   # The analyses below are basic descriptions of the variables. After testing, they should be replaced.
-
-   summary(Sample_Date)
-   summary(Treatment)
-   summary(Replicate)
-   summary(Station)
-   summary(Species)
-   summary(Family)
-   summary(Order)
-   summary(Adults)
-   summary(utm_easting)
-   summary(utm_northing)
-   summary(Year)
-   # Get more details on character variables
-
-   summary(as.factor(dt1$Treatment))
-   summary(as.factor(dt1$Replicate))
-   summary(as.factor(dt1$Station))
-   summary(as.factor(dt1$Species))
-   summary(as.factor(dt1$Family))
-   summary(as.factor(dt1$Order))
-   detach(dt1)
-
-}
+save(ddata, file = paste0(getwd(),'/data/raw data/landis_2018/ddata'))
 

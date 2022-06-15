@@ -7,9 +7,9 @@
 # Contact:  Aaron Ellison -  Harvard Forest  - aellison@fas.harvard.edu
 # Stylesheet v2.10 for metadata conversion into program: John H. Porter, Univ. Virginia, jporter@virginia.edu
 
-infile1 <- 'temporal_change_data_preparation/data/raw data/ellison_2018/hf160-01-ibuttons.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/ellison_2018/') || !file.exists(infile1))   {
-   dir.create('temporal_change_data_preparation/data/raw data/ellison_2018/',  showWarnings = FALSE)
+infile1 <- paste0(getwd(),'/data/raw data/ellison_2018/hf160-01-ibuttons.csv')
+if(!dir.exists(paste0(getwd(),'/data/raw data/ellison_2018/')) || !file.exists(infile1))   {
+   dir.create(paste0(getwd(),'/data/raw data/ellison_2018/'),  showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/160/20/b1610a7d2f2a95a509af82a7bd01a108"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -57,9 +57,9 @@ if (class(dt1$subplot.t)!="factor") dt1$subplot.t<- as.factor(dt1$subplot.t)
 dt1$soilt <- ifelse((trimws(as.character(dt1$soilt))==trimws("NA")),NA,dt1$soilt)
 
 
-infile2 <- 'temporal_change_data_preparation/data/raw data/ellison_2018/hf160-02-subplots.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/ellison_2018/') || !file.exists(infile2))   {
-   dir.create('temporal_change_data_preparation/data/raw data/ellison_2018/',  showWarnings = FALSE)
+infile2 <- paste0(getwd(),'/data/raw data/ellison_2018/hf160-02-subplots.csv')
+if(!dir.exists(paste0(getwd(),'/data/raw data/ellison_2018/')) || !file.exists(infile2))   {
+   dir.create(paste0(getwd(),'/data/raw data/ellison_2018/'),  showWarnings = FALSE)
    inUrl2  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/160/20/4b3cebe94958392ef8cff25409565fa1"
    download.file(inUrl2, infile2, method="curl")
 }
@@ -103,9 +103,9 @@ dt2$elevation <- ifelse((trimws(as.character(dt2$elevation))==trimws("NA")),NA,d
 
 
 
-infile3 <- 'temporal_change_data_preparation/data/raw data/ellison_2018/hf160-03-ants.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/ellison_2018/') || !file.exists(infile3))   {
-   dir.create('temporal_change_data_preparation/data/raw data/ellison_2018/',  showWarnings = FALSE)
+infile3 <- paste0(getwd(),'/data/raw data/ellison_2018/hf160-03-ants.csv')
+if(!dir.exists(paste0(getwd(),'/data/raw data/ellison_2018/')) || !file.exists(infile3))   {
+   dir.create(paste0(getwd(),'/data/raw data/ellison_2018/'),  showWarnings = FALSE)
    inUrl3  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/160/20/8821e0b89318cfb2204f9acc17287e0f"
    download.file(inUrl3, infile3, method="curl")
 }
@@ -153,84 +153,7 @@ if (class(dt3$count)=="character") dt3$count <-as.numeric(dt3$count)
 dt3$count <- ifelse((trimws(as.character(dt3$count))==trimws("NA")),NA,dt3$count)
 
 ddata <- dt3
-save(ddata, file='temporal_change_data_preparation/data/raw data/ellison_2018/ddata')
+save(ddata, file=paste0(getwd(),'/data/raw data/ellison_2018/ddata'))
 
 
-
-if(FALSE) {
-   # Nitrogen data
-
-   infile4 <- 'temporal_change_data_preparation/data/raw data/ellison_2018/hf160-04-nitrogen.csv'
-   if(!dir.exists('temporal_change_data_preparation/data/raw data/ellison_2018/') || !file.exists(infile4))   {
-      dir.create('temporal_change_data_preparation/data/raw data/ellison_2018/',  showWarnings = FALSE)
-      inUrl4  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/160/20/ae3924330258eef88d26f8abe7cdf4d1"
-      download.file(inUrl4, infile4, method="curl")
-   }
-
-
-   dt4 <-read.csv(infile4, header=F
-                  ,skip=1
-                  ,sep=","
-                  , col.names=c(
-                     "year",
-                     "quarter",
-                     "treatment",
-                     "block",
-                     "plot",
-                     "subplot",
-                     "subplot.t",
-                     "res.mass",
-                     "tot.nh4",
-                     "tot.no3",
-                     "res.nh4",
-                     "res.no3",
-                     "tot.n",
-                     "res.n",
-                     "daily.nh4",
-                     "daily.no3",
-                     "daily.n"    ), check.names=TRUE)
-
-
-   # Fix any interval or ratio columns mistakenly read in as nominal and nominal columns read as numeric or dates read as strings
-
-   if (class(dt4$quarter)!="factor") dt4$quarter<- as.factor(dt4$quarter)
-   if (class(dt4$treatment)!="factor") dt4$treatment<- as.factor(dt4$treatment)
-   if (class(dt4$block)!="factor") dt4$block<- as.factor(dt4$block)
-   if (class(dt4$plot)!="factor") dt4$plot<- as.factor(dt4$plot)
-   if (class(dt4$subplot)!="factor") dt4$subplot<- as.factor(dt4$subplot)
-   if (class(dt4$subplot.t)!="factor") dt4$subplot.t<- as.factor(dt4$subplot.t)
-   if (class(dt4$res.mass)=="factor") dt4$res.mass <-as.numeric(levels(dt4$res.mass))[as.integer(dt4$res.mass) ]
-   if (class(dt4$res.mass)=="character") dt4$res.mass <-as.numeric(dt4$res.mass)
-   if (class(dt4$tot.nh4)=="factor") dt4$tot.nh4 <-as.numeric(levels(dt4$tot.nh4))[as.integer(dt4$tot.nh4) ]
-   if (class(dt4$tot.nh4)=="character") dt4$tot.nh4 <-as.numeric(dt4$tot.nh4)
-   if (class(dt4$tot.no3)=="factor") dt4$tot.no3 <-as.numeric(levels(dt4$tot.no3))[as.integer(dt4$tot.no3) ]
-   if (class(dt4$tot.no3)=="character") dt4$tot.no3 <-as.numeric(dt4$tot.no3)
-   if (class(dt4$res.nh4)=="factor") dt4$res.nh4 <-as.numeric(levels(dt4$res.nh4))[as.integer(dt4$res.nh4) ]
-   if (class(dt4$res.nh4)=="character") dt4$res.nh4 <-as.numeric(dt4$res.nh4)
-   if (class(dt4$res.no3)=="factor") dt4$res.no3 <-as.numeric(levels(dt4$res.no3))[as.integer(dt4$res.no3) ]
-   if (class(dt4$res.no3)=="character") dt4$res.no3 <-as.numeric(dt4$res.no3)
-   if (class(dt4$tot.n)=="factor") dt4$tot.n <-as.numeric(levels(dt4$tot.n))[as.integer(dt4$tot.n) ]
-   if (class(dt4$tot.n)=="character") dt4$tot.n <-as.numeric(dt4$tot.n)
-   if (class(dt4$res.n)=="factor") dt4$res.n <-as.numeric(levels(dt4$res.n))[as.integer(dt4$res.n) ]
-   if (class(dt4$res.n)=="character") dt4$res.n <-as.numeric(dt4$res.n)
-   if (class(dt4$daily.nh4)=="factor") dt4$daily.nh4 <-as.numeric(levels(dt4$daily.nh4))[as.integer(dt4$daily.nh4) ]
-   if (class(dt4$daily.nh4)=="character") dt4$daily.nh4 <-as.numeric(dt4$daily.nh4)
-   if (class(dt4$daily.no3)=="factor") dt4$daily.no3 <-as.numeric(levels(dt4$daily.no3))[as.integer(dt4$daily.no3) ]
-   if (class(dt4$daily.no3)=="character") dt4$daily.no3 <-as.numeric(dt4$daily.no3)
-   if (class(dt4$daily.n)=="factor") dt4$daily.n <-as.numeric(levels(dt4$daily.n))[as.integer(dt4$daily.n) ]
-   if (class(dt4$daily.n)=="character") dt4$daily.n <-as.numeric(dt4$daily.n)
-
-   # Convert Missing Values to NA for non-dates
-
-   dt4$res.mass <- ifelse((trimws(as.character(dt4$res.mass))==trimws("NA")),NA,dt4$res.mass)
-   dt4$tot.nh4 <- ifelse((trimws(as.character(dt4$tot.nh4))==trimws("NA")),NA,dt4$tot.nh4)
-   dt4$tot.no3 <- ifelse((trimws(as.character(dt4$tot.no3))==trimws("NA")),NA,dt4$tot.no3)
-   dt4$res.nh4 <- ifelse((trimws(as.character(dt4$res.nh4))==trimws("NA")),NA,dt4$res.nh4)
-   dt4$res.no3 <- ifelse((trimws(as.character(dt4$res.no3))==trimws("NA")),NA,dt4$res.no3)
-   dt4$tot.n <- ifelse((trimws(as.character(dt4$tot.n))==trimws("NA")),NA,dt4$tot.n)
-   dt4$res.n <- ifelse((trimws(as.character(dt4$res.n))==trimws("NA")),NA,dt4$res.n)
-   dt4$daily.nh4 <- ifelse((trimws(as.character(dt4$daily.nh4))==trimws("NA")),NA,dt4$daily.nh4)
-   dt4$daily.no3 <- ifelse((trimws(as.character(dt4$daily.no3))==trimws("NA")),NA,dt4$daily.no3)
-   dt4$daily.n <- ifelse((trimws(as.character(dt4$daily.n))==trimws("NA")),NA,dt4$daily.n)
-}
 

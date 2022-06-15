@@ -2,7 +2,7 @@
 if (FALSE) {
 
    dataset_id <- 'mcMurdo_2018'
-   load(file=paste0('temporal_change_data_preparation/data/raw data/', dataset_id, '/ddata'))
+   load(file=paste0(getwd(), '/data/raw data/', dataset_id, '/ddata'))
 
    # First experiment <- moat
    ddata_moat <- ddata[ddata$SAMPLE_TYPE == 'moat',]
@@ -40,8 +40,8 @@ if (FALSE) {
 
    dat <- dat[!is.na(dat$value), ]
 
-   # dir.create(paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
-   # write.csv(dat, paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, 'a.csv'),
+   # dir.create(paste0(getwd(), '/data/wrangled data/', dataset_id), showWarnings = FALSE)
+   # write.csv(dat, paste0(getwd(), '/data/wrangled data/', dataset_id, "/", dataset_id, 'a.csv'),
    #           row.names=FALSE)
 
 }

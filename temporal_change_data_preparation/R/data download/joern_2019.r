@@ -8,9 +8,9 @@
 # Stylesheet v2.10 for metadata conversion into program: John H. Porter, Univ. Virginia, jporter@virginia.edu
 
 dataset_id <- 'joern_2019'
-infile1 <- 'temporal_change_data_preparation/data/raw data/joern_2019/CGR021.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/joern_2019/') || !file.exists(infile1))   {
-   dir.create('temporal_change_data_preparation/data/raw data/joern_2019/',  showWarnings = FALSE)
+infile1 <- paste0(getwd(),'/data/raw data/joern_2019/CGR021.csv')
+if(!dir.exists(paste0(getwd(),'/data/raw data/joern_2019/')) || !file.exists(infile1))   {
+   dir.create(paste0(getwd(),'/data/raw data/joern_2019/'),  showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-knz/29/14/aaa7b3b477019f6bb96f47a9a6ae8943"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -67,9 +67,9 @@ dt1$Cloudcov <- ifelse((trimws(as.character(dt1$Cloudcov))==trimws("Blank")),NA,
 
 # Biological data
 
-infile2 <- 'temporal_change_data_preparation/data/raw data/joern_2019/CGR022.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/joern_2019/') || !file.exists(infile2))   {
-   dir.create('temporal_change_data_preparation/data/raw data/joern_2019/',  showWarnings = FALSE)
+infile2 <- paste0(getwd(),'/data/raw data/joern_2019/CGR022.csv')
+if(!dir.exists(paste0(getwd(),'/data/raw data/joern_2019/')) || !file.exists(infile2))   {
+   dir.create(paste0(getwd(),'/data/raw data/joern_2019/'),  showWarnings = FALSE)
 inUrl2  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-knz/29/14/3fb352e2478f776517f7e880fe31b808"
    download.file(inUrl2, infile2, method="curl")
 }
@@ -158,124 +158,11 @@ dt2[dt2$DataCode == 'cgr02', 'DataCode'] <- 'CGR02'
 dt2 <- dt2[dt2$DataCode == 'CGR02',]
 
 ddata <- dt2
-save(ddata, file='temporal_change_data_preparation/data/raw data/joern_2019/ddata')
+save(ddata, file=paste0(getwd(),'/data/raw data/joern_2019/ddata'))
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-if(FALSE) { # instars are not of interest here
-
-   inUrl3  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-knz/29/14/98a5bc89f50cee4ae3c173ffc2802fe8"
-   infile3 <- tempfile()
-   download.file(inUrl3,infile3,method="curl")
-
-
-   dt3 <-read.csv(infile3,header=F
-                  ,skip=1
-                  ,sep=","
-                  ,quot='"'
-                  , col.names=c(
-                     "DataCode",
-                     "RecType",
-                     "RecYear",
-                     "RecMonth",
-                     "RecDay",
-                     "Watershed",
-                     "Soiltype",
-                     "Repsite",
-                     "Spcode",
-                     "Species",
-                     "FirstInstar",
-                     "SecThirdInstar",
-                     "ForthInstar",
-                     "FifthInstar",
-                     "Female",
-                     "Male",
-                     "Total",
-                     "Comments"    ), check.names=TRUE)
-
-
-   # Fix any interval or ratio columns mistakenly read in as nominal and nominal columns read as numeric or dates read as strings
-
-   if (class(dt3$DataCode)!="factor") dt3$DataCode<- as.factor(dt3$DataCode)
-   if (class(dt3$RecType)!="factor") dt3$RecType<- as.factor(dt3$RecType)
-   if (class(dt3$RecYear)=="factor") dt3$RecYear <-as.numeric(levels(dt3$RecYear))[as.integer(dt3$RecYear) ]
-   if (class(dt3$RecYear)=="character") dt3$RecYear <-as.numeric(dt3$RecYear)
-   if (class(dt3$Watershed)!="factor") dt3$Watershed<- as.factor(dt3$Watershed)
-   if (class(dt3$Soiltype)!="factor") dt3$Soiltype<- as.factor(dt3$Soiltype)
-   if (class(dt3$Repsite)!="factor") dt3$Repsite<- as.factor(dt3$Repsite)
-   if (class(dt3$Spcode)!="factor") dt3$Spcode<- as.factor(dt3$Spcode)
-   if (class(dt3$Species)!="factor") dt3$Species<- as.factor(dt3$Species)
-   if (class(dt3$FirstInstar)=="factor") dt3$FirstInstar <-as.numeric(levels(dt3$FirstInstar))[as.integer(dt3$FirstInstar) ]
-   if (class(dt3$FirstInstar)=="character") dt3$FirstInstar <-as.numeric(dt3$FirstInstar)
-   if (class(dt3$SecThirdInstar)=="factor") dt3$SecThirdInstar <-as.numeric(levels(dt3$SecThirdInstar))[as.integer(dt3$SecThirdInstar) ]
-   if (class(dt3$SecThirdInstar)=="character") dt3$SecThirdInstar <-as.numeric(dt3$SecThirdInstar)
-   if (class(dt3$ForthInstar)=="factor") dt3$ForthInstar <-as.numeric(levels(dt3$ForthInstar))[as.integer(dt3$ForthInstar) ]
-   if (class(dt3$ForthInstar)=="character") dt3$ForthInstar <-as.numeric(dt3$ForthInstar)
-   if (class(dt3$FifthInstar)=="factor") dt3$FifthInstar <-as.numeric(levels(dt3$FifthInstar))[as.integer(dt3$FifthInstar) ]
-   if (class(dt3$FifthInstar)=="character") dt3$FifthInstar <-as.numeric(dt3$FifthInstar)
-   if (class(dt3$Female)=="factor") dt3$Female <-as.numeric(levels(dt3$Female))[as.integer(dt3$Female) ]
-   if (class(dt3$Female)=="character") dt3$Female <-as.numeric(dt3$Female)
-   if (class(dt3$Male)=="factor") dt3$Male <-as.numeric(levels(dt3$Male))[as.integer(dt3$Male) ]
-   if (class(dt3$Male)=="character") dt3$Male <-as.numeric(dt3$Male)
-   if (class(dt3$Total)=="factor") dt3$Total <-as.numeric(levels(dt3$Total))[as.integer(dt3$Total) ]
-   if (class(dt3$Total)=="character") dt3$Total <-as.numeric(dt3$Total)
-   if (class(dt3$Comments)!="factor") dt3$Comments<- as.factor(dt3$Comments)
-
-   # Convert Missing Values to NA for non-dates
-
-   dt3$FirstInstar <- ifelse((trimws(as.character(dt3$FirstInstar))==trimws("blank")),NA,dt3$FirstInstar)
-   dt3$SecThirdInstar <- ifelse((trimws(as.character(dt3$SecThirdInstar))==trimws("Blank")),NA,dt3$SecThirdInstar)
-   dt3$ForthInstar <- ifelse((trimws(as.character(dt3$ForthInstar))==trimws("Blank")),NA,dt3$ForthInstar)
-   dt3$FifthInstar <- ifelse((trimws(as.character(dt3$FifthInstar))==trimws("Blank")),NA,dt3$FifthInstar)
-   dt3$Female <- ifelse((trimws(as.character(dt3$Female))==trimws("Blank")),NA,dt3$Female)
-   dt3$Male <- ifelse((trimws(as.character(dt3$Male))==trimws("blank")),NA,dt3$Male)
-
-
-   # Here is the structure of the input data frame:
-   str(dt3)
-   attach(dt3)
-   # The analyses below are basic descriptions of the variables. After testing, they should be replaced.
-
-   summary(DataCode)
-   summary(RecType)
-   summary(RecYear)
-   summary(RecMonth)
-   summary(RecDay)
-   summary(Watershed)
-   summary(Soiltype)
-   summary(Repsite)
-   summary(Spcode)
-   summary(Species)
-   summary(FirstInstar)
-   summary(SecThirdInstar)
-   summary(ForthInstar)
-   summary(FifthInstar)
-   summary(Female)
-   summary(Male)
-   summary(Total)
-   summary(Comments)
-   detach(dt3)
-
-}
 
 
 
@@ -302,9 +189,9 @@ if(FALSE) { # instars are not of interest here
 # Stylesheet v2.10 for metadata conversion into program: John H. Porter, Univ. Virginia, jporter@virginia.edu
 
 
-infile4 <- 'temporal_change_data_preparation/data/raw data/joern_2019/kfh011.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/joern_2019/') || !file.exists(infile4))   {
-   dir.create('temporal_change_data_preparation/data/raw data/joern_2019/',  showWarnings = FALSE)
+infile4 <- paste0(getwd(),'/data/raw data/joern_2019/kfh011.csv')
+if(!dir.exists(paste0(getwd(),'/data/raw data/joern_2019/')) || !file.exists(infile4))   {
+   dir.create(paste0(getwd(),'/data/raw data/joern_2019/'),  showWarnings = FALSE)
    inUrl4  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-knz/42/9/3565885edc7640f2276174ca1f00240b"
    download.file(inUrl4, infile4, method="curl")
 }
@@ -352,28 +239,4 @@ if (class(dt4$Comments)!="factor") dt4$Comments<- as.factor(dt4$Comments)
 dt4$Watershed <- ifelse((trimws(as.character(dt4$Watershed))==trimws(".")),NA,as.character(dt4$Watershed))
 
 fd <- dt4
-save(fd, file='temporal_change_data_preparation/data/raw data/joern_2019/ddata_env')
-
-if(FALSE) {
-   # Here is the structure of the input data frame:
-   str(dt4)
-   attach(dt4)
-   # The analyses below are basic descriptions of the variables. After testing, they should be replaced.
-
-   summary(Watershed)
-   summary(Hname)
-   summary(Hectares)
-   summary(Acres)
-   summary(Date)
-   summary(Type)
-   summary(Year)
-   summary(Code)
-   summary(Comments)
-   detach(dt4)
-}
-
-
-
-
-
-
+save(fd, file=paste0(getwd(),'/data/raw data/joern_2019/ddata_env'))

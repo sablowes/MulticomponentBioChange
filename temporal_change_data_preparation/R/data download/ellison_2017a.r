@@ -14,9 +14,9 @@
 
 # hf113-18-hf-cham-ants.csv
 
-infile18 <- 'temporal_change_data_preparation/data/raw data/ellison_2017a/hf113-18-hf-cham-ants.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/ellison_2017a/') || !file.exists(infile18))   {
-   dir.create('temporal_change_data_preparation/data/raw data/ellison_2017a/', showWarnings = FALSE)
+infile18 <- paste0(getwd(),'/data/raw data/ellison_2017a/hf113-18-hf-cham-ants.csv')
+if(!dir.exists(paste0(getwd(),'/data/raw data/ellison_2017a/')) || !file.exists(infile18))   {
+   dir.create(paste0(getwd(),'/data/raw data/ellison_2017a/'), showWarnings = FALSE)
    inUrl18  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/113/57/3863c9f86b760a9339f7e999d1aab4eb"
    download.file(inUrl18,infile18,method="curl")
 }
@@ -121,9 +121,9 @@ if(FALSE) {      # MANU ISSUES HAVE TO BE CHECKED HERE ID SPECIFICALLY
 
 # hf113-21-df-cham-ants.csv
 
-infile21 <- 'temporal_change_data_preparation/data/raw data/ellison_2017a/hf113-21-df-cham-ants.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/ellison_2017a/') || !file.exists(infile21))   {
-   dir.create('temporal_change_data_preparation/data/raw data/ellison_2017a/', showWarnings = FALSE)
+infile21 <- paste0(getwd(),'/data/raw data/ellison_2017a/hf113-21-df-cham-ants.csv')
+if(!dir.exists(paste0(getwd(),'/data/raw data/ellison_2017a/')) || !file.exists(infile21))   {
+   dir.create(paste0(getwd(),'/data/raw data/ellison_2017a/'), showWarnings = FALSE)
    inUrl21  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-hfr/113/57/6df2d60f7e3e0d015b93234ab67eac69"
    download.file(inUrl21,infile21,method="curl")
 }
@@ -231,7 +231,7 @@ dt21 <- dt21[, match(colnames(dt18), colnames(dt21))]
 ddata <- rbind(dt18, dt21)
 # ddata <- ddata[!is.na(ddata$sampling.id) & !is.na(ddata$genus) & !is.na(ddata$species) & !is.na(ddata$n) & ddata$n > 0, ]
 
-save(ddata, file = 'temporal_change_data_preparation/data/raw data/ellison_2017a/ddata')
+save(ddata, file = paste0(getwd(),'/data/raw data/ellison_2017a/ddata'))
 
 
 

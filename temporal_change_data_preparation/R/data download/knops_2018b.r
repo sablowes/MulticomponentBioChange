@@ -13,9 +13,9 @@
 
 
 
-infile1 <- 'temporal_change_data_preparation/data/raw data/knops_2018b/e153_Small mammal abundance.txt'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/knops_2018b/') || !file.exists(infile1))   {
-   dir.create('temporal_change_data_preparation/data/raw data/knops_2018b/', showWarnings = FALSE)
+infile1 <- paste0(getwd(),'/data/raw data/knops_2018b/e153_Small mammal abundance.txt')
+if(!dir.exists(paste0(getwd(),'/data/raw data/knops_2018b/')) || !file.exists(infile1))   {
+   dir.create(paste0(getwd(),'/data/raw data/knops_2018b/'), showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-cdr/317/8/854936b5b38258e6fd02f2639e9dfa43"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -58,28 +58,4 @@ if (class(dt1$Zapus_hudsonicus)=="character") dt1$Zapus_hudsonicus <-as.numeric(
 # Convert Missing Values to NA for non-dates
 
 ddata <- dt1
-save(ddata, file = 'temporal_change_data_preparation/data/raw data/knops_2018b/ddata')
-
-if(FALSE) {
-      # Here is the structure of the input data frame:
-      str(dt1)
-      attach(dt1)
-      # The analyses below are basic descriptions of the variables. After testing, they should be replaced.
-
-      summary(Year)
-      summary(Plot)
-      summary(Fencing)
-      summary(Fertilization)
-      summary(Burning)
-      summary(Trapnights)
-      summary(Microtus_pennsylvanicus)
-      summary(Peromyscus_maniculatus)
-      summary(Undet_Soricidae.Shrew.)
-      summary(Zapus_hudsonicus)
-      detach(dt1)
-
-
-
-
-
-}
+save(ddata, file = paste0(getwd(),'/data/raw data/knops_2018b/ddata'))

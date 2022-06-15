@@ -18,7 +18,7 @@ Files in the data folder include:
 
 **conceptual\_figure\_dat.Rdata**: simulated data to reproduce Figure 2.
 
-**long\_table.csv**: data for *Temporal comparisons: experimental or natural perturbations*. This data is was prepared for analysis by Alban Sagouis, using code available in subdirecotry temporal_change_data_preparation: <https://github.com/sablowes/MulticomponentBioChange/temporal_change_data_preparation>
+**long\_table.csv**: data for *Temporal comparisons: experimental or natural perturbations*. This data was prepared for analysis by Alban Sagouis, using code available in subdirecotry temporal_change_data_preparation: <https://github.com/sablowes/MulticomponentBioChange/temporal_change_data_preparation>
 
 **PREDICTS\_alpha.Rdata**: data for *Spatial comparison: anthropogenic perturbations*; this is the output of 01\_PREDICTS\_data\_wrangle.R
 
@@ -52,4 +52,4 @@ Files in the results folder include:
 
 **predicts\_multi4\_results.Rdata**: output of 04\_PREDICTS\_multi\_coef\_wrangle.R
 
-**spatial\_multi4\_results.Rdata**: output of 04\_spat\_natural\_multi4\_posterior\_wrangle.R
+**spatial\_multi4\_results.Rdata**: output of 04\_spat\_natural\_multi4\_posterior\_wrangle.R  

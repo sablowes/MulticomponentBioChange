@@ -2,7 +2,7 @@
 library(data.table)
 
 dataset_id <- 'knops_2018b'
-load(file = 'temporal_change_data_preparation/data/raw data/knops_2018b/ddata')
+load(file = paste0(getwd(), '/data/raw data/knops_2018b/ddata'))
 setDT(ddata)
 
 setnames(ddata, c('Year','Plot'), c('year','site'))
@@ -71,6 +71,6 @@ ddata[,
 
 ddata <- unique(ddata)
 
-dir.create(paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
-fwrite(ddata, paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
+dir.create(paste0(getwd(), '/data/wrangled data/', dataset_id), showWarnings = FALSE)
+fwrite(ddata, paste0(getwd(), '/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
 

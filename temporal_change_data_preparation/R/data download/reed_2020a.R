@@ -13,9 +13,9 @@
 
 
 
-infile1 <- 'temporal_change_data_preparation/data/raw data/reed_2020a/LTE_All_Fish_All_Years_20200224.csv'
-if(!dir.exists('temporal_change_data_preparation/data/raw data/reed_2020a/') || !file.exists(infile1))   {
-   dir.create('temporal_change_data_preparation/data/raw data/reed_2020a/', showWarnings = FALSE)
+infile1 <- paste0(getwd(),'/data/raw data/reed_2020a/LTE_All_Fish_All_Years_20200224.csv')
+if(!dir.exists(paste0(getwd(),'/data/raw data/reed_2020a/')) || !file.exists(infile1))   {
+   dir.create(paste0(getwd(),'/data/raw data/reed_2020a/'), showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-sbc/30/18/4587fe81c6d2eabf530c70e53b302132"
    download.file(inUrl1, infile1, method="curl")
 }
@@ -101,44 +101,5 @@ dt1$AREA <- ifelse((trimws(as.character(dt1$AREA))==trimws("-99999")),NA,dt1$ARE
 dt1$SCIENTIFIC_NAME <- as.factor(ifelse((trimws(as.character(dt1$SCIENTIFIC_NAME))==trimws("-99999")),NA,as.character(dt1$SCIENTIFIC_NAME)))
 
 ddata <- dt1
-save(ddata, file = 'temporal_change_data_preparation/data/raw data/reed_2020a/ddata')
-
-
-
-if(FALSE) {
-      # Here is the structure of the input data frame:
-      str(dt1)
-      attach(dt1)
-      # The analyses below are basic descriptions of the variables. After testing, they should be replaced.
-
-      summary(YEAR)
-      summary(MONTH)
-      summary(DATE)
-      summary(SITE)
-      summary(TRANSECT)
-      summary(TREATMENT)
-      summary(VIS)
-      summary(QUAD)
-      summary(SIDE)
-      summary(SP_CODE)
-      summary(SIZE)
-      summary(COUNT)
-      summary(AREA)
-      summary(SCIENTIFIC_NAME)
-      summary(COMMON_NAME)
-      summary(TAXON_KINGDOM)
-      summary(TAXON_PHYLUM)
-      summary(TAXON_CLASS)
-      summary(TAXON_ORDER)
-      summary(TAXON_FAMILY)
-      summary(TAXON_GENUS)
-      summary(GROUP)
-      summary(SURVEY)
-      summary(MOBILITY)
-      summary(GROWTH_MORPH)
-      detach(dt1)
-
-}
-
-
+save(ddata, file = paste0(getwd(),'/data/raw data/reed_2020a/ddata'))
 

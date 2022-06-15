@@ -3,7 +3,7 @@ library(data.table)
 
 
 dataset_id <- 'bateman_2018'
-load(file = 'temporal_change_data_preparation/data/raw data/bateman_2018/ddata')
+load(file = paste0(getwd(), '/data/raw data/bateman_2018/ddata'))
 setDT(ddata)
 
 setnames(ddata, old = c('reach', 'site_code','common_name','bird_count','survey_date'),
@@ -66,5 +66,5 @@ ddata[, ':='(
 )
 ][, design := paste0('A', fifelse(treatment == "urban_restored", 'I', 'C'))]
 
-dir.create(paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
-fwrite(ddata, paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id, '/', dataset_id, '.csv'),  row.names=FALSE)
+dir.create(paste0(getwd(), '/data/wrangled data/', dataset_id), showWarnings = FALSE)
+fwrite(ddata, paste0(getwd(), '/data/wrangled data/', dataset_id, '/', dataset_id, '.csv'),  row.names=FALSE)
