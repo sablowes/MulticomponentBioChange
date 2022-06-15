@@ -2,7 +2,7 @@
 library(data.table)
 
 dataset_id <- 'knops_2018a'
-load(file = 'temporal_comparison_data_preparation/data/raw data/knops_2018a/ddata')
+load(file = 'temporal_change_data_preparation/data/raw data/knops_2018a/ddata')
 setDT(ddata)
 
 setnames(ddata, c('Plot','nSpecimens','Date'), c('site','value','date'))
@@ -75,6 +75,6 @@ ddata[,
       )]
 
 
-dir.create(paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
-fwrite(ddata, paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
+dir.create(paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
+fwrite(ddata, paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
 

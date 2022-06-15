@@ -4,7 +4,7 @@ if (FALSE) {
 
    dataset_id <- 'johnson_2019'
 
-   load(file = 'temporal_comparison_data_preparation/data/raw data/johnson_2019/ddata')
+   load(file = 'temporal_change_data_preparation/data/raw data/johnson_2019/ddata')
    setDT(ddata)
 
    setnames(ddata, old = c('Year', 'Creek','Habitat', 'Transect', 'Rep'),
@@ -66,8 +66,8 @@ if (FALSE) {
    ddata[site == 'West' & block == 'TSA' & plot ==1 & year == 2003]
 
 
-   dir.create(paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
-   fwrite(ddata, paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
+   dir.create(paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
+   fwrite(ddata, paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
           row.names=FALSE)
 }
 

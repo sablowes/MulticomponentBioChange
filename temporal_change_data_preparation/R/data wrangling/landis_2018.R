@@ -3,7 +3,7 @@ library(data.table)
 
 
 dataset_id <- 'landis_2018'
-load(file = 'temporal_comparison_data_preparation/data/raw data/landis_2018/ddata')
+load(file = 'temporal_change_data_preparation/data/raw data/landis_2018/ddata')
 setDT(ddata)
 
 setnames(ddata, old = c('Treatment', 'Replicate', 'Station', 'Species','Adults', 'Year','Sample_Date'),
@@ -70,5 +70,5 @@ ddata[, ':='(
 )
 ]
 
-dir.create(paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
-fwrite(ddata, paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id, '/', dataset_id, '.csv'), row.names = FALSE)
+dir.create(paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
+fwrite(ddata, paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id, '/', dataset_id, '.csv'), row.names = FALSE)

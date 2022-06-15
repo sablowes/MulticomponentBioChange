@@ -2,7 +2,7 @@
 library(data.table)
 
 dataset_id <- 'reed_2020a'
-load(file = 'temporal_comparison_data_preparation/data/raw data/reed_2020a/ddata')
+load(file = 'temporal_change_data_preparation/data/raw data/reed_2020a/ddata')
 setDT(ddata)
 
 setnames(ddata, tolower)
@@ -79,6 +79,6 @@ ddata[, ':='(
 ddata[treatment != 'control', "time_since_disturbance" := year - min(year), by = site]
 
 
-dir.create(paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
-fwrite(ddata, paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
+dir.create(paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
+fwrite(ddata, paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'), row.names = FALSE)
 

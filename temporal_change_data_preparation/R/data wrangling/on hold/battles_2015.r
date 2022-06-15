@@ -3,7 +3,7 @@
 dataset_id <- 'battles_2015'
 
       if(FALSE) {
-      load(file='temporal_comparison_data_preparation/data/raw data/battles_2015/ddata')
+      load(file='temporal_change_data_preparation/data/raw data/battles_2015/ddata')
 
       dat <- data.frame(dataset_id = rep(dataset_id, nrow(ddata)))
 
@@ -53,8 +53,8 @@ dataset_id <- 'battles_2015'
 
       dat <- dat[!is.na(dat$value) & dat$value > 0, ]
 
-      # dir.create(paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
-      # write.csv(dat, paste0('temporal_comparison_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
+      # dir.create(paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id), showWarnings = FALSE)
+      # write.csv(dat, paste0('temporal_change_data_preparation/data/wrangled data/', dataset_id, "/", dataset_id, '.csv'),
       #           row.names=FALSE)
 
       }

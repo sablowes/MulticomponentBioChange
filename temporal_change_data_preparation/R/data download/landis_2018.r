@@ -8,9 +8,9 @@
 
 
 
-infile1 <- 'temporal_comparison_data_preparation/data/raw data/landis_2018/Insect+Populations+via+Sticky+Traps'
-if(!dir.exists('temporal_comparison_data_preparation/data/raw data/landis_2018/') || !file.exists(infile1))   {
-   dir.create('temporal_comparison_data_preparation/data/raw data/landis_2018/', showWarnings = FALSE)
+infile1 <- 'temporal_change_data_preparation/data/raw data/landis_2018/Insect+Populations+via+Sticky+Traps'
+if(!dir.exists('temporal_change_data_preparation/data/raw data/landis_2018/') || !file.exists(infile1))   {
+   dir.create('temporal_change_data_preparation/data/raw data/landis_2018/', showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-kbs/23/26/8d33fa9169147f266d20bdcd09a07820"
    download.file(inUrl1,infile1,method="curl")
 }
@@ -60,7 +60,7 @@ if (class(dt1$utm_northing)=="character") dt1$utm_northing <-as.numeric(dt1$utm_
 # Convert Missing Values to NA for non-dates
 
 ddata <- dt1
-save(ddata, file = 'temporal_comparison_data_preparation/data/raw data/landis_2018/ddata')
+save(ddata, file = 'temporal_change_data_preparation/data/raw data/landis_2018/ddata')
 
 
 

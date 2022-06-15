@@ -12,9 +12,9 @@
 # Stylesheet v2.10 for metadata conversion into program: John H. Porter, Univ. Virginia, jporter@virginia.edu
 
 
-infile1 <- 'temporal_comparison_data_preparation/data/raw data/carpenter_2017/cascade_phytoplankton_v0.1.csv_upload.csv'
-if(!dir.exists('temporal_comparison_data_preparation/data/raw data/carpenter_2017/') || !file.exists(infile1))   {
-   dir.create('temporal_comparison_data_preparation/data/raw data/carpenter_2017/', showWarnings = FALSE)
+infile1 <- 'temporal_change_data_preparation/data/raw data/carpenter_2017/cascade_phytoplankton_v0.1.csv_upload.csv'
+if(!dir.exists('temporal_change_data_preparation/data/raw data/carpenter_2017/') || !file.exists(infile1))   {
+   dir.create('temporal_change_data_preparation/data/raw data/carpenter_2017/', showWarnings = FALSE)
    inUrl1  <- "https://pasta.lternet.edu/package/data/eml/knb-lter-ntl/353/4/c36bcc062259fe68fb719996eb470ce6"
    download.file(inUrl1, infile1, method="auto")
 }
@@ -88,7 +88,7 @@ dt1$total_vol <- ifelse((trimws(as.character(dt1$total_vol))==trimws("NA")),NA,d
 dt1$total_biovol <- ifelse((trimws(as.character(dt1$total_biovol))==trimws("NA")),NA,dt1$total_biovol)
 
 ddata <- dt1
-save(ddata, file='temporal_comparison_data_preparation/data/raw data/carpenter_2017/ddata')
+save(ddata, file='temporal_change_data_preparation/data/raw data/carpenter_2017/ddata')
 
 
 
