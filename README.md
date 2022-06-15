@@ -18,7 +18,9 @@ Files in the data folder include:
 
 **conceptual\_figure\_dat.Rdata**: simulated data to reproduce Figure 2.
 
-**long\_table.csv**: data for *Temporal comparisons: experimental or natural perturbations*. This data was prepared for analysis by Alban Sagouis, using code available in subdirecotry temporal_change_data_preparation: <https://github.com/sablowes/MulticomponentBioChange/temporal_change_data_preparation>
+**rarefied_medians_count.Rdata**: data for *Temporal changes: natural environmental variation*; this was prepared with code available here: https://github.com/sChange-workshop/BioGeo-BioDiv-Change.
+
+**long\_table.csv**: data for *Temporal changes: experimental or natural perturbations*. This data was prepared for analysis by Alban Sagouis using code available in folder temporal_change_data_preparation: <https://github.com/sablowes/MulticomponentBioChange/temporal_change_data_preparation>
 
 **PREDICTS\_alpha.Rdata**: data for *Spatial comparison: anthropogenic perturbations*; this is the output of 01\_PREDICTS\_data\_wrangle.R
 
@@ -28,7 +30,7 @@ Files in the data folder include:
 
 Files in the r\_scripts folder include
 
-00\_: script to load packages and set working directory
+00\_: script to load packages and set working directory.
 
 01\_: scripts to prepare data for analyses. BioTIME data were prepared using code available here: <https://github.com/sChange-workshop/BioGeo-BioDiv-Change>. Perturbed time series data were compiled and standardised with code written by Alban Sagouis available here: <https://github.com/chase-lab/BioTIMEx>
 
