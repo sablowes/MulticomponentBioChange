@@ -42,7 +42,17 @@ Files in the r\_scripts folder include
 
 05\_: scripts to present results: figures and supplemental table.
 
-200\_: script to generate data for conceptual figure.
+200\_: script to generate data for conceptual figure.  
+
+Recent versions of packages `rstan` and `StanHeaders` might need to be installed:  
+```
+# run the next line if you already have rstan installed
+# remove.packages(c("StanHeaders", "rstan"))
+
+install.packages("rstan", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
+remotes::install_github("stan-dev/rstan/StanHeaders@StanHeaders_2.26")
+
+```
 
 ## Results
 
