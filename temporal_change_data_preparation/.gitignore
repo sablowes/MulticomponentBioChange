@@ -1,7 +1,3 @@
-.Rhistory
-.Rapp.history
-.DS_Store
-.Ruserdata
 .Rproj.user
 .Rprofile
 *.csv
@@ -9,3 +5,4 @@
 /points
 /data/raw data/
 /data/wrangled data/
+.Rhistory

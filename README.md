@@ -2,9 +2,6 @@ Characterising multicomponent biodiversity change
 ================
 Shane Blowes
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<!-- badges: start -->
-<!-- badges: end -->
 This repository includes R code to reproduce the analyses shown in the article:
 
 **Local biodiversity change reflects interactions among changing abundance, evenness and richness**
@@ -21,7 +18,9 @@ Files in the data folder include:
 
 **conceptual\_figure\_dat.Rdata**: simulated data to reproduce Figure 2.
 
-**long\_table.csv**: data for *Temporal comparisons: experimental or natural perturbations*. This data is was prepared for analysis by Alban Sagouis, using code available here: <https://github.com/chase-lab/BioTIMEx>
+**rarefied_medians_count.Rdata**: data for *Temporal changes: natural environmental variation*; this was prepared with code available here: https://github.com/sChange-workshop/BioGeo-BioDiv-Change.
+
+**long\_table.csv**: data for *Temporal changes: experimental or natural perturbations*. This data was prepared for analysis by Alban Sagouis using code available in folder temporal_change_data_preparation: <https://github.com/sablowes/MulticomponentBioChange/temporal_change_data_preparation>
 
 **PREDICTS\_alpha.Rdata**: data for *Spatial comparison: anthropogenic perturbations*; this is the output of 01\_PREDICTS\_data\_wrangle.R
 
@@ -31,7 +30,7 @@ Files in the data folder include:
 
 Files in the r\_scripts folder include
 
-00\_: script to load packages and set working directory
+00\_: script to load packages and set working directory.
 
 01\_: scripts to prepare data for analyses. BioTIME data were prepared using code available here: <https://github.com/sChange-workshop/BioGeo-BioDiv-Change>. Perturbed time series data were compiled and standardised with code written by Alban Sagouis available here: <https://github.com/chase-lab/BioTIMEx>
 
@@ -43,7 +42,17 @@ Files in the r\_scripts folder include
 
 05\_: scripts to present results: figures and supplemental table.
 
-200\_: script to generate data for conceptual figure.
+200\_: script to generate data for conceptual figure.  
+
+Recent versions of packages `rstan` and `StanHeaders` might need to be installed:  
+```
+# run the next line if you already have rstan installed
+# remove.packages(c("StanHeaders", "rstan"))
+
+install.packages("rstan", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
+remotes::install_github("stan-dev/rstan/StanHeaders@StanHeaders_2.26")
+
+```
 
 ## Results
 
@@ -55,4 +64,4 @@ Files in the results folder include:
 
 **predicts\_multi4\_results.Rdata**: output of 04\_PREDICTS\_multi\_coef\_wrangle.R
 
-**spatial\_multi4\_results.Rdata**: output of 04\_spat\_natural\_multi4\_posterior\_wrangle.R
+**spatial\_multi4\_results.Rdata**: output of 04\_spat\_natural\_multi4\_posterior\_wrangle.R  
