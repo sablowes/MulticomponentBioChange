@@ -32,7 +32,7 @@ Files in the r\_scripts folder include
 
 00\_: script to load packages and set working directory.
 
-01\_: scripts to prepare data for analyses. BioTIME data were prepared using code available here: <https://github.com/sChange-workshop/BioGeo-BioDiv-Change>. Perturbed time series data were compiled and standardised with code written by Alban Sagouis available here: <https://github.com/chase-lab/BioTIMEx>
+01\_: scripts to prepare data for analyses. BioTIME data were prepared using code available here: <https://github.com/sChange-workshop/BioGeo-BioDiv-Change>. Perturbed time series data were compiled and standardised with code written by Alban Sagouis available here: <https://github.com/chase-lab/BioTIMEx>.
 
 02\_: scripts to fit models to the data. Some were written to run on a scientific computing cluster.
 
